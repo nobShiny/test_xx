@@ -2,26 +2,56 @@
 package com.zte.topsky.home.fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
 import com.zte.topsky.R;
 import com.zte.topsky.base.fragment.BaseFragment;
+import com.zte.topsky.chartdata.activity.RainFallDataActivity;
+import com.zte.topsky.home.adapter.CommonAdapter;
+import com.zte.topsky.home.adapter.ViewHolder;
+import com.zte.topsky.home.bean.GridCutItem;
+import com.zte.topsky.home.customui.homeScrollView.ControlScrollView;
+import com.zte.topsky.home.customui.homeScrollView.DragGridView;
+import com.zte.topsky.home.customui.homeScrollView.ViewWithSign;
+import com.zte.topsky.weatherdata.activity.WeatherDateActivity;
 
+import java.util.ArrayList;
+import java.util.Collections;
+
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
- * Created by wuyexiong on 4/25/15.
+ * Created by nobShiny.
  */
 public class HomeFragment extends BaseFragment {
     private static final String KEY_CONTENT = "HomeFragment";
-    private Banner banner;
     private static Context mContext;
+    private ViewWithSign viewWithSign;
+    @BindView(R.id.scroller)
+    ControlScrollView scroller;
+    @BindView(R.id.grid)
+    DragGridView grid;
+    @BindView(R.id.banner)
+    Banner banner;
+
+    private String[][] gridDatas = {{"气象",""},
+            {"数据",""},
+            {"阀门管理",""},
+            {"监控",""},
+            {"灌溉统计","警告"},
+            {"在线购水",""}};
+
+    private ArrayList<GridCutItem> mDatas = new ArrayList<>();
+    private CommonAdapter mAdapter;
 
 
     public static HomeFragment newInstance(Context context) {
@@ -53,12 +83,108 @@ public class HomeFragment extends BaseFragment {
 //        layout.setGravity(Gravity.CENTER);
 //        layout.addView(text);
         View layout = inflater.inflate(R.layout.home_fragment, null);
-        ButterKnife.bind(this, layout);
+        ButterKnife.bind(this,layout);
         initView(layout);
         return layout;
     }
 
     private void initView(View layout) {
+//        scroller = (ControlScrollView) getActivity().findViewById(R.id.scroller);
+        scroller.smoothScrollTo(0, 0);
+        mDatas.clear();
+        for (int i = 0; i < gridDatas.length; i++) {
+            GridCutItem gridCutItem = new GridCutItem(gridDatas[i][0], gridDatas[i][1]);
+            mDatas.add(gridCutItem);
+        }
+
+        grid.setAdapter(mAdapter = new CommonAdapter<GridCutItem>(mContext, mDatas, R.layout.home_grid_item) {
+            @Override
+            public void convert(ViewHolder helper, final GridCutItem item, int position) {
+                helper.setText(R.id.tv_item, item.getName());
+                viewWithSign = helper.getView(R.id.icon);
+                viewWithSign.addDrawText(item.getTip());
+                if (position == mAdapter.getCount() - 1) {
+//                    helper.setImageResource(R.id.iv_item, R.drawable.add_more);
+                }
+            }
+        });
+
+        //设置拖拽数据交换
+        grid.setOnChangeListener(new DragGridView.OnChangeListener() {
+            @Override
+            public void onChange(int from, int to) {
+                GridCutItem temp = mDatas.get(from);
+                if (from < to) {
+                    for (int i = from; i < to; i++) {
+                        Collections.swap(mDatas, i, i + 1);
+                    }
+                } else if (from > to) {
+                    for (int i = from; i > to; i--) {
+                        Collections.swap(mDatas, i, i - 1);
+                    }
+                }
+                mDatas.set(to, temp);
+                mAdapter.notifyDataSetChanged();
+            }
+        });
+        mAdapter.notifyDataSetChanged();
+        scroller.setScrollState(new ControlScrollView.ScrollState() {
+            @Override
+            public void stopTouch() {
+                grid.stopDrag();
+            }
+
+            @Override
+            public void isCanDrag(boolean isCanDrag) {
+                grid.setCanDrag(isCanDrag);
+            }
+        });
+
+        grid.setOnDragStartListener(new DragGridView.OnDragStartListener() {
+            @Override
+            public void onDragStart() {
+                scroller.requestDisallowInterceptTouchEvent(true);
+                scroller.setInControl(false);
+//                ((MainActivity) getContext()).setViewpagerNoSCroll(true);
+            }
+        });
+        grid.setOnDragEndListener(new DragGridView.OnDragEndListener() {
+            @Override
+            public void onDragEnd() {
+                scroller.requestDisallowInterceptTouchEvent(false);
+                scroller.setInControl(true);
+//                ((MainActivity) getContext()).setViewpagerNoSCroll(false);
+                grid.postInvalidate();
+            }
+        });
+
+        grid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                switch (i){
+                    case 0:
+                        Intent rainfall_intent = new Intent(getContext(), RainFallDataActivity.class);
+                        startActivity(rainfall_intent);
+                        break;
+                    case 1:
+                        Intent weather_intent = new Intent(getContext(), WeatherDateActivity.class);
+                        startActivity(weather_intent);
+                        break;
+                    case 2:
+                        break;
+                    case 3:
+                        break;
+                    case 4:
+                        break;
+                    case 5:
+                        break;
+                    case 6:
+                        break;
+                }
+            }
+        });
+
+
         initBanner(layout);
         initFunctionArea(layout);
 
@@ -69,7 +195,6 @@ public class HomeFragment extends BaseFragment {
     }
 
     private void initBanner(View layout) {
-        banner = (Banner) layout.findViewById(R.id.banner);
         banner.isAutoPlay(true);
         TypedArray images = this.getResources().obtainTypedArray(R.array.banner_images);
         Integer[] resIds = new Integer[images.length()];
@@ -87,6 +212,7 @@ public class HomeFragment extends BaseFragment {
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putString(KEY_CONTENT, mContent);
+
     }
 
     @Override

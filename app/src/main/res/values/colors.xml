@@ -10,4 +10,6 @@
 
     <color name="main_bottom_tab_textcolor_normal">#999999</color>
     <color name="main_bottom_tab_textcolor_selected">#46c01b</color>
+
+    <color name="signColor">#ea5f61</color>
 </resources>

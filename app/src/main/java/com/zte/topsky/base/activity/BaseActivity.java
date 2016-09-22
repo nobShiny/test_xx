@@ -12,6 +12,8 @@ import android.view.WindowManager;
 
 import java.util.Stack;
 
+import butterknife.ButterKnife;
+
 /**
  * Created by NobShiny
  * on 2016/9/7 15:26.
@@ -29,6 +31,7 @@ public class BaseActivity extends AppCompatActivity {
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
         }
         setContentView(layoutResID);
+        ButterKnife.bind(this);
         context = getApplicationContext();
     }
 

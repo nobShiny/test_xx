@@ -13,8 +13,7 @@ import java.util.List;
  */
 public class AppFragmentAdapter extends FragmentPagerAdapter {
 
-    protected static final String[] CONTENT = new String[]{"This", "Is", "A", "Test"};
-//    private int mCount = ONTENT.length;
+    protected static final String[] CONTENT = new String[]{"首页", "消息中心", "动态", "我的"};
     private Context mContext;
     private List<Fragment> mList;
 
@@ -39,10 +38,4 @@ public class AppFragmentAdapter extends FragmentPagerAdapter {
         return AppFragmentAdapter.CONTENT[position % CONTENT.length];
     }
 
-//    public void setCount(int count) {
-//        if (count > 0 && count <= 10) {
-//            mCount = count;
-//            notifyDataSetChanged();
-//        }
-//    }
 }

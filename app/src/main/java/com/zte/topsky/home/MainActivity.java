@@ -20,19 +20,25 @@ import com.zte.topsky.home.fragment.NewsFragment;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends BaseActivity {
+import butterknife.BindView;
 
+public class MainActivity extends BaseActivity {
 
     private Context mContext;
     private AppFragmentAdapter mAdapter;
-    private ViewPager mPager;
-    private MainBottomTabLayout mTabLayout;
+
     private List<Fragment> fragmentList = new ArrayList<>();
+
+    @BindView(R.id.main_bottom_tablayout)
+    MainBottomTabLayout mTabLayout;
+    @BindView(R.id.tab_pager)
+    ViewPager mPager;
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState, R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         mContext = this.getApplicationContext();
         addActivity(this);
@@ -52,9 +58,8 @@ public class MainActivity extends BaseActivity {
         fragmentList.add(NewsFragment.newInstance(mContext));
         fragmentList.add(MineFragment.newInstance(mContext));
         mAdapter = new AppFragmentAdapter(mContext,getSupportFragmentManager(),fragmentList);
-        mPager = (ViewPager) findViewById(R.id.tab_pager);
         mPager.setAdapter(mAdapter);
-        mTabLayout = (MainBottomTabLayout) findViewById(R.id.main_bottom_tablayout);
+//        mTabLayout = (MainBottomTabLayout) findViewById(R.id.main_bottom_tablayout);
         mTabLayout.setViewPager(mPager);
     }
 
