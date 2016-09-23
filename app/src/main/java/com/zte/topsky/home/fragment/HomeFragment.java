@@ -72,16 +72,6 @@ public class HomeFragment extends BaseFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-//        TextView text = new TextView(getActivity());
-//        text.setGravity(Gravity.CENTER);
-//        text.setText(mContent);
-//        text.setTextSize(20 * getResources().getDisplayMetrics().density);
-//        text.setPadding(20, 20, 20, 20);
-//
-//        LinearLayout layout = new LinearLayout(getActivity());
-//        layout.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.FILL_PARENT));
-//        layout.setGravity(Gravity.CENTER);
-//        layout.addView(text);
         View layout = inflater.inflate(R.layout.home_fragment, null);
         ButterKnife.bind(this,layout);
         initView(layout);
@@ -89,7 +79,6 @@ public class HomeFragment extends BaseFragment {
     }
 
     private void initView(View layout) {
-//        scroller = (ControlScrollView) getActivity().findViewById(R.id.scroller);
         scroller.smoothScrollTo(0, 0);
         mDatas.clear();
         for (int i = 0; i < gridDatas.length; i++) {
@@ -97,6 +86,12 @@ public class HomeFragment extends BaseFragment {
             mDatas.add(gridCutItem);
         }
 
+        initBanner(layout);
+        initFunctionArea(layout);
+
+    }
+
+    private void initFunctionArea(View layout) {
         grid.setAdapter(mAdapter = new CommonAdapter<GridCutItem>(mContext, mDatas, R.layout.home_grid_item) {
             @Override
             public void convert(ViewHolder helper, final GridCutItem item, int position) {
@@ -184,18 +179,9 @@ public class HomeFragment extends BaseFragment {
             }
         });
 
-
-        initBanner(layout);
-        initFunctionArea(layout);
-
-    }
-
-    private void initFunctionArea(View layout) {
-
     }
 
     private void initBanner(View layout) {
-        banner.isAutoPlay(true);
         TypedArray images = this.getResources().obtainTypedArray(R.array.banner_images);
         Integer[] resIds = new Integer[images.length()];
         for (int i = 0; i < images.length(); i++) {
@@ -228,6 +214,12 @@ public class HomeFragment extends BaseFragment {
     @Override
     protected void lazyLoadData() {
 
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        banner.isAutoPlay(true);
     }
 
     @Override

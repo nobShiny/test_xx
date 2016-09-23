@@ -29,7 +29,7 @@ import java.util.List;
  * on 2016/9/22 10:53.
  */
 
-public class RainFallView extends BaseChartView{
+public class RainFallView extends BaseChartView {
 
     private String TAG = "RainFallView";
     private SplineChart chart = new SplineChart();
@@ -45,7 +45,7 @@ public class RainFallView extends BaseChartView{
         initView();
     }
 
-    public RainFallView(Context context, AttributeSet attrs){
+    public RainFallView(Context context, AttributeSet attrs) {
         super(context, attrs);
         initView();
     }
@@ -55,14 +55,13 @@ public class RainFallView extends BaseChartView{
         initView();
     }
 
-    private void initView()
-    {
+    private void initView() {
         chartLabels();
         chartDataSet();
         chartRender();
 
         //綁定手势滑动事件
-        this.bindTouch(this,chart);
+        this.bindTouch(this, chart);
     }
 
 
@@ -70,16 +69,15 @@ public class RainFallView extends BaseChartView{
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
         //图所占范围大小
-        chart.setChartRange(w,h);
+        chart.setChartRange(w, h);
     }
 
 
-    private void chartRender()
-    {
+    private void chartRender() {
         try {
 
             //设置绘图区默认缩进px值,留置空间显示Axis,Axistitle....
-            int [] ltrb = getBarLnDefaultSpadding();
+            int[] ltrb = getBarLnDefaultSpadding();
             chart.setPadding(ltrb[0], ltrb[1], ltrb[2], ltrb[3]);
 
             //平移时收缩下
@@ -144,12 +142,12 @@ public class RainFallView extends BaseChartView{
 
             //定义交叉点标签显示格式,特别备注,因曲线图的特殊性，所以返回格式为:  x值,y值
             //请自行分析定制
-            chart.setDotLabelFormatter(new IFormatterTextCallBack(){
+            chart.setDotLabelFormatter(new IFormatterTextCallBack() {
 
                 @Override
                 public String textFormatter(String value) {
                     // TODO Auto-generated method stub
-                    String label = "("+value+")";
+                    String label = "(" + value + ")";
                     return (label);
                 }
 
@@ -185,15 +183,15 @@ public class RainFallView extends BaseChartView{
             //批注
             List<AnchorDataPoint> mAnchorSet = new ArrayList<AnchorDataPoint>();
 
-            AnchorDataPoint an1 = new AnchorDataPoint(2,0,XEnum.AnchorStyle.CAPROUNDRECT);
+            AnchorDataPoint an1 = new AnchorDataPoint(2, 0, XEnum.AnchorStyle.CAPROUNDRECT);
             an1.setAlpha(200);
             an1.setBgColor(Color.RED);
             an1.setAreaStyle(XEnum.DataAreaStyle.FILL);
 
-            AnchorDataPoint an2 = new AnchorDataPoint(1,1,XEnum.AnchorStyle.CIRCLE);
+            AnchorDataPoint an2 = new AnchorDataPoint(1, 1, XEnum.AnchorStyle.CIRCLE);
             an2.setBgColor(Color.GRAY);
 
-            AnchorDataPoint an3 = new AnchorDataPoint(0,2,XEnum.AnchorStyle.RECT);
+            AnchorDataPoint an3 = new AnchorDataPoint(0, 2, XEnum.AnchorStyle.RECT);
             an3.setBgColor(Color.BLUE);
 
             mAnchorSet.add(an1);
@@ -207,16 +205,16 @@ public class RainFallView extends BaseChartView{
             Log.e(TAG, e.toString());
         }
     }
-    private void chartDataSet()
-    {
+
+    private void chartDataSet() {
 
         //线1的数据集
         List<PointD> linePoint1 = new ArrayList<>();
         linePoint1.add(new PointD(2d, 8d));
         linePoint1.add(new PointD(5d, 8d));
         linePoint1.add(new PointD(10d, 12d));
-        SplineData dataSeries1 = new SplineData("当前降水量",linePoint1,
-                Color.rgb(54, 141, 238) );
+        SplineData dataSeries1 = new SplineData("当前降水量", linePoint1,
+                Color.rgb(54, 141, 238));
         //把线弄细点
         dataSeries1.getLinePaint().setStrokeWidth(2);
 
@@ -227,8 +225,8 @@ public class RainFallView extends BaseChartView{
         linePoint2.add(new PointD(2d, 52d));
         linePoint2.add(new PointD(3d, 53d));
         linePoint2.add(new PointD(8d, 55d));
-        SplineData dataSeries2 = new SplineData("一小时降水量",linePoint2,
-                Color.rgb(255, 165, 132) );
+        SplineData dataSeries2 = new SplineData("一小时降水量", linePoint2,
+                Color.rgb(255, 165, 132));
         dataSeries2.setLabelVisible(true);
         dataSeries2.setDotStyle(XEnum.DotStyle.RECT);
         dataSeries2.getDotLabelPaint().setColor(Color.RED);
@@ -240,23 +238,21 @@ public class RainFallView extends BaseChartView{
         dataSeries2.getLabelOptions().setLabelBoxStyle(XEnum.LabelBoxStyle.CAPROUNDRECT);
 
         //累计降水量线
-        // fixme  修改数据
         List<PointD> linePoint3 = new ArrayList<>();
         linePoint3.add(new PointD(1d, 80d));
         linePoint3.add(new PointD(2d, 82d));
         linePoint3.add(new PointD(3d, 83d));
         linePoint3.add(new PointD(5d, 86d));
         linePoint3.add(new PointD(10d, 88d));
-        SplineData dataSeries3 = new SplineData("累计降水量",linePoint3,
-                Color.rgb(64, 101, 208) );
+        SplineData dataSeries3 = new SplineData("累计降水量", linePoint3,
+                Color.rgb(64, 101, 208));
 
         chartData.add(dataSeries1);
         chartData.add(dataSeries2);
         chartData.add(dataSeries3);
     }
 
-    private void chartLabels()
-    {
+    private void chartLabels() {
         labels.add("0");
         labels.add("5");
         labels.add("10");
@@ -266,9 +262,9 @@ public class RainFallView extends BaseChartView{
 
     @Override
     public void render(Canvas canvas) {
-        try{
+        try {
             chart.render(canvas);
-        } catch (Exception e){
+        } catch (Exception e) {
             Log.e(TAG, e.toString());
         }
     }
@@ -280,58 +276,52 @@ public class RainFallView extends BaseChartView{
 
         super.onTouchEvent(event);
 
-        if(event.getAction() == MotionEvent.ACTION_UP)
-        {
-            triggerClick(event.getX(),event.getY());
+        if (event.getAction() == MotionEvent.ACTION_UP) {
+            triggerClick(event.getX(), event.getY());
         }
         return true;
     }
 
 
     //触发监听
-    private void triggerClick(float x,float y)
-    {
+    private void triggerClick(float x, float y) {
         //交叉线
-        if(chart.getDyLineVisible())chart.getDyLine().setCurrentXY(x,y);
-        if(!chart.getListenItemClickStatus())
-        {
-            if(chart.getDyLineVisible()&&chart.getDyLine().isInvalidate())this.invalidate();
-        }else{
-            PointPosition record = chart.getPositionRecord(x,y);
-            if( null == record) return;
+        if (chart.getDyLineVisible()) chart.getDyLine().setCurrentXY(x, y);
+        if (!chart.getListenItemClickStatus()) {
+            if (chart.getDyLineVisible() && chart.getDyLine().isInvalidate()) this.invalidate();
+        } else {
+            PointPosition record = chart.getPositionRecord(x, y);
+            if (null == record) return;
 
-            if(record.getDataID() >= chartData.size()) return;
+            if (record.getDataID() >= chartData.size()) return;
             SplineData lData = chartData.get(record.getDataID());
-            List<PointD> linePoint =  lData.getLineDataSet();
+            List<PointD> linePoint = lData.getLineDataSet();
             int pos = record.getDataChildID();
             int i = 0;
             Iterator it = linePoint.iterator();
-            while(it.hasNext())
-            {
-                PointD entry=(PointD)it.next();
+            while (it.hasNext()) {
+                PointD entry = (PointD) it.next();
 
-                if(pos == i)
-                {
+                if (pos == i) {
                     Double xValue = entry.x;
                     Double yValue = entry.y;
 
                     float r = record.getRadius();
-                    chart.showFocusPointF(record.getPosition(),r * 2);
+                    chart.showFocusPointF(record.getPosition(), r * 2);
                     chart.getFocusPaint().setStyle(Style.STROKE);
                     chart.getFocusPaint().setStrokeWidth(3);
-                    if(record.getDataID() >= 2)
-                    {
+                    if (record.getDataID() >= 2) {
                         chart.getFocusPaint().setColor(Color.BLUE);
-                    }else{
+                    } else {
                         chart.getFocusPaint().setColor(Color.RED);
                     }
 
                     //在点击处显示tooltip
                     pToolTip.setColor(Color.RED);
-                    chart.getToolTip().setCurrentXY(x,y);
-                    chart.getToolTip().addToolTip(" Key:"+lData.getLineKey(),pToolTip);
-                    chart.getToolTip().addToolTip(" Label:"+lData.getLabel(),pToolTip);
-                    chart.getToolTip().addToolTip(" Current Value:" +Double.toString(xValue)+","+Double.toString(yValue),pToolTip);
+                    chart.getToolTip().setCurrentXY(x, y);
+                    chart.getToolTip().addToolTip(" Key:" + lData.getLineKey(), pToolTip);
+                    chart.getToolTip().addToolTip(" Label:" + lData.getLabel(), pToolTip);
+                    chart.getToolTip().addToolTip(" Current Value:" + Double.toString(xValue) + "," + Double.toString(yValue), pToolTip);
                     chart.getToolTip().getBackgroundPaint().setAlpha(100);
                     this.invalidate();
 

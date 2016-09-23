@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory android:title="分类一">
+        <SwitchPreference
+            android:icon="@drawable/ic_setting_upload"
+            android:key="wifi"
+            android:summaryOff="禁用"
+            android:summaryOn="启用"
+            android:title="WIFI" />
+        <CheckBoxPreference
+            android:icon="@drawable/ic_setting_about"
+            android:key="wifi2"
+            android:summaryOff="禁用"
+            android:summaryOn="启用"
+            android:title="WIFI2" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="分类二">
+        <ListPreference
+            android:title="数据更新频率"
+            android:key="update_rate"
+            android:entries="@array/update_rate"
+            android:entryValues="@array/update_rate_value"
+            android:summary="默认" />
+        <MultiSelectListPreference
+            android:title="数据更新频率（多选）"
+            android:key="update_rate_muti"
+            android:entries="@array/update_rate"
+            android:entryValues="@array/update_rate_value"
+            android:summary="默认"/>
+    </PreferenceCategory>
+    <PreferenceCategory android:title="分类三">
+        <EditTextPreference
+            android:dependency="wifi"
+            android:key="wifi_name"
+            android:summary="默认值"
+            android:title="WIFI Name" />
+        <!-- 做简单显示，可以不指定key -->
+        <Preference
+            android:title="关于我们"
+            android:summary="中兴长天" />
+        <Preference
+            android:title="版本号"
+            android:summary="1.0"
+            android:enabled="false"
+            android:selectable="false"/>
+    </PreferenceCategory>
+</PreferenceScreen>
