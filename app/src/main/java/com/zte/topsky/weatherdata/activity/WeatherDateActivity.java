@@ -14,7 +14,7 @@ public class WeatherDateActivity extends BaseActivity{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState, R.layout.weather_activity);
+        super.onCreate(savedInstanceState, R.layout.activity_weather);
 
     }
 

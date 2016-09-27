@@ -21,7 +21,7 @@ public class RainFallDataActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState, R.layout.rainfall_activity);
+        super.onCreate(savedInstanceState, R.layout.activity_rainfall);
         addActivity(this);
     }
 }

@@ -21,6 +21,8 @@ import com.zte.topsky.home.bean.GridCutItem;
 import com.zte.topsky.home.customui.homeScrollView.ControlScrollView;
 import com.zte.topsky.home.customui.homeScrollView.DragGridView;
 import com.zte.topsky.home.customui.homeScrollView.ViewWithSign;
+import com.zte.topsky.monitor.activity.MonitorActivity;
+import com.zte.topsky.sluicecontrol.activity.SluiceControlActivity;
 import com.zte.topsky.weatherdata.activity.WeatherDateActivity;
 
 import java.util.ArrayList;
@@ -72,7 +74,7 @@ public class HomeFragment extends BaseFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View layout = inflater.inflate(R.layout.home_fragment, null);
+        View layout = inflater.inflate(R.layout.fragment_home, null);
         ButterKnife.bind(this,layout);
         initView(layout);
         return layout;
@@ -92,7 +94,7 @@ public class HomeFragment extends BaseFragment {
     }
 
     private void initFunctionArea(View layout) {
-        grid.setAdapter(mAdapter = new CommonAdapter<GridCutItem>(mContext, mDatas, R.layout.home_grid_item) {
+        grid.setAdapter(mAdapter = new CommonAdapter<GridCutItem>(mContext, mDatas, R.layout.item_home_grid) {
             @Override
             public void convert(ViewHolder helper, final GridCutItem item, int position) {
                 helper.setText(R.id.tv_item, item.getName());
@@ -166,14 +168,24 @@ public class HomeFragment extends BaseFragment {
                         startActivity(weather_intent);
                         break;
                     case 2:
+                        Intent sluice_intent = new Intent(getContext(), SluiceControlActivity.class);
+                        startActivity(sluice_intent);
                         break;
                     case 3:
+                        Intent monitor_intent = new Intent(getContext(), MonitorActivity.class);
+                        startActivity(monitor_intent);
                         break;
                     case 4:
+//                        Intent monitor_intent = new Intent(getContext(), MonitorActivity.class);
+//                        startActivity(monitor_intent);
                         break;
                     case 5:
+//                        Intent monitor_intent = new Intent(getContext(), MonitorActivity.class);
+//                        startActivity(monitor_intent);
                         break;
                     case 6:
+//                        Intent monitor_intent = new Intent(getContext(), MonitorActivity.class);
+//                        startActivity(monitor_intent);
                         break;
                 }
             }

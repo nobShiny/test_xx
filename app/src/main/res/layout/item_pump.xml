@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="4dp"
+    android:focusableInTouchMode="false"
+    app:contentPadding="8dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_pump_appellation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="未知机井"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <LinearLayout style="@style/pump_item_linearlayout_style">
+
+            <TextView
+                style="@style/pump_item_text_style"
+                android:gravity="right"
+                android:text="运行状态：" />
+
+            <TextView
+                android:id="@+id/tv_run_state"
+                style="@style/pump_item_text_style"
+                android:text="未知" />
+
+        </LinearLayout>
+
+        <LinearLayout style="@style/pump_item_linearlayout_style">
+
+            <TextView
+                style="@style/pump_item_text_style"
+                android:gravity="right"
+                android:text="流速：" />
+
+            <TextView
+                android:id="@+id/tv_run_speed"
+                style="@style/pump_item_text_style"
+                android:text="未知" />
+
+        </LinearLayout>
+
+        <LinearLayout style="@style/pump_item_linearlayout_style">
+
+            <TextView
+                style="@style/pump_item_text_style"
+                android:gravity="right"
+                android:text="流量：" />
+
+            <TextView
+                android:id="@+id/tv_run_flow"
+                style="@style/pump_item_text_style"
+                android:text="未知" />
+
+        </LinearLayout>
+
+        <LinearLayout style="@style/pump_item_linearlayout_style">
+
+            <TextView
+                style="@style/pump_item_text_style"
+                android:gravity="right"
+                android:text="运行时间：" />
+
+            <TextView
+                android:id="@+id/tv_run_time"
+                style="@style/pump_item_text_style"
+                android:text="未知" />
+
+        </LinearLayout>
+
+        <LinearLayout style="@style/pump_item_linearlayout_style">
+
+            <TextView
+                style="@style/pump_item_text_style"
+                android:gravity="right"
+                android:text="机井开关控制：" />
+
+            <Switch
+                android:id="@+id/tv_run_switch"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:checked="false"
+                android:switchPadding="8dp"
+                android:textOff="关闭"
+                android:textOn="开启" />
+        </LinearLayout>
+
+    </LinearLayout>
+</android.support.v7.widget.CardView>

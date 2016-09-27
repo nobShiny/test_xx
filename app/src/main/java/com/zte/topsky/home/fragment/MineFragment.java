@@ -47,7 +47,7 @@ public class MineFragment extends BaseFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View layout = inflater.inflate(R.layout.mine_fragment, null);
+        View layout = inflater.inflate(R.layout.fragment_mine, null);
         ButterKnife.bind(this, layout);
         initView(layout);
         return layout;

@@ -40,7 +40,7 @@ public class MessagesFragment extends BaseFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View layout = inflater.inflate(R.layout.messages_fragment, null);
+        View layout = inflater.inflate(R.layout.fragment_messages, null);
         ButterKnife.bind(this, layout);
         initView(layout);
         return layout;

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/monitor_window_background"
+    android:orientation="vertical"
+    android:fitsSystemWindows="true">
+
+    <SurfaceView
+        android:id="@+id/sv_view_content"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="8dp" />
+
+    <RelativeLayout
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:layout_below="@id/sv_view_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="18dp">
+
+        <Button
+            android:id="@+id/btn_control_up"
+            android:layout_width="104dp"
+            android:layout_height="50dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="2dp"
+            android:background="@drawable/pc_up"
+
+            />
+
+        <Button
+            android:id="@+id/btn_control_enter"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_centerInParent="true"
+            android:background="@drawable/key_enter_selector"
+            android:text="enter"
+            android:textSize="14sp"
+
+            />
+
+        <Button
+            android:id="@+id/btn_control_left"
+            android:layout_width="50dp"
+            android:layout_height="104dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="2dp"
+            android:background="@drawable/key_left_selector"
+
+            />
+
+        <Button
+            android:id="@+id/btn_control_right"
+            android:layout_width="50dp"
+            android:layout_height="104dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="2dp"
+            android:background="@drawable/key_right_selector"
+            />
+
+        <Button
+            android:id="@+id/btn_control_down"
+            android:layout_width="104dp"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="2dp"
+            android:background="@drawable/key_down_selector"
+
+            />
+
+
+    </RelativeLayout>
+</LinearLayout>
