@@ -1,9 +1,8 @@
 
 package com.zte.topsky.home.fragment;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.res.TypedArray;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -11,14 +10,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.youth.banner.Banner;
-import com.youth.banner.BannerConfig;
 import com.zhy.adapter.recyclerview.CommonAdapter;
 import com.zhy.adapter.recyclerview.MultiItemTypeAdapter;
 import com.zhy.adapter.recyclerview.base.ViewHolder;
 import com.zte.topsky.R;
 import com.zte.topsky.base.fragment.BaseFragment;
 import com.zte.topsky.common.utils.DividerItemDecoration;
+import com.zte.topsky.news.activity.NewActivity;
 import com.zte.topsky.news.bean.News;
 
 import java.util.ArrayList;
@@ -32,12 +30,14 @@ import butterknife.ButterKnife;
  */
 public class NewsFragment extends BaseFragment {
     private static final String KEY_CONTENT = "HomeFragment";
-    Banner banner;
+    private String mContent = "???";
+//    @BindView(R.id.banner)
+//    Banner banner;
     private static Context mContext;
     @BindView(R.id.rl_news_list)
     RecyclerView rlNewsList;
 
-    public DataListener Urllistener;
+//    public DataListener Urllistener;
     private CommonAdapter<String> mAdapter;
     private List<News> mList;
 
@@ -47,8 +47,6 @@ public class NewsFragment extends BaseFragment {
         mContext = context;
         return fragment;
     }
-
-    private String mContent = "???";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -61,27 +59,31 @@ public class NewsFragment extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View layout = inflater.inflate(R.layout.fragment_news, null);
-        ButterKnife.bind(this, layout);
+        ButterKnife.bind(this,layout);
         initView(layout);
         return layout;
     }
 
     private void initView(View layout) {
-        initBanner(layout);
+//        initBanner(layout);
         mList = textData();
         rlNewsList.setLayoutManager(new LinearLayoutManager(mContext));
         rlNewsList.addItemDecoration(new DividerItemDecoration(mContext, DividerItemDecoration.VERTICAL_LIST));
-        mAdapter = new CommonAdapter(mContext,R.layout.item_news,mList) {
+        mAdapter = new CommonAdapter(mContext, R.layout.item_news, mList) {
             @Override
             protected void convert(ViewHolder holder, Object o, int position) {
-                holder.setText(R.id.tv_news_title,mList.get(position).getTitle());
-                holder.setText(R.id.tv_news_time,mList.get(position).getTime());
+                holder.setText(R.id.tv_news_title, mList.get(position).getTitle());
+                holder.setText(R.id.tv_news_time, mList.get(position).getTime());
             }
         };
+        rlNewsList.setAdapter(mAdapter);
         mAdapter.setOnItemClickListener(new MultiItemTypeAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, RecyclerView.ViewHolder holder, int position) {
-                Urllistener.sendURL(mList.get(position).getUrl());
+//                Urllistener.sendURL(mList.get(position).getUrl());
+                Intent intent = new Intent(mContext, NewActivity.class);
+                intent.putExtra("url",mList.get(position).getUrl());
+                startActivity(intent);
             }
 
             @Override
@@ -89,22 +91,7 @@ public class NewsFragment extends BaseFragment {
                 return false;
             }
         });
-        rlNewsList.setAdapter(mAdapter);
-    }
 
-    private void initBanner(View layout) {
-        banner = (Banner) layout.findViewById(R.id.banner);
-        banner.isAutoPlay(true);
-        TypedArray images = this.getResources().obtainTypedArray(R.array.banner_images);
-        Integer[] resIds = new Integer[images.length()];
-        for (int i = 0; i < images.length(); i++) {
-            resIds[i] = images.getResourceId(i, 0);
-        }
-        images.recycle();
-        String[] titles = this.getResources().getStringArray(R.array.title);
-        banner.setBannerStyle(BannerConfig.CIRCLE_INDICATOR_TITLE_INSIDE);
-        banner.setBannerTitle(titles);
-        banner.setImages(resIds);
     }
 
     private List textData() {
@@ -172,17 +159,36 @@ public class NewsFragment extends BaseFragment {
     @Override
     public void onPause() {
         super.onPause();
-        banner.isAutoPlay(false);
+//        banner.isAutoPlay(false);
     }
 
-    public interface DataListener{
-        void sendURL(String url);
-    }
+    //    public interface DataListener {
+//        void sendURL(String url);
+//    }
 
+//    @Override
+//    public void onAttach(Activity activity) {
+//        super.onAttach(activity);
+//        try {
+//            Urllistener = (DataListener) activity;
+//        } catch (ClassCastException e) {
+//            throw new ClassCastException(activity.toString()
+//                    + " must implement DataListener");
+//        }
+//    }
 
-    @Override
-    public void onAttach(Activity activity) {
-        Urllistener = (DataListener) activity;
-        super.onAttach(activity);
-    }
+    //    private void initBanner(View layout) {
+//        banner.isAutoPlay(true);
+//        TypedArray images = this.getResources().obtainTypedArray(R.array.banner_images);
+//        Integer[] resIds = new Integer[images.length()];
+//        for (int i = 0; i < images.length(); i++) {
+//            resIds[i] = images.getResourceId(i, 0);
+//        }
+//        images.recycle();
+//        String[] titles = this.getResources().getStringArray(R.array.title);
+//        banner.setBannerStyle(BannerConfig.CIRCLE_INDICATOR_TITLE_INSIDE);
+//        banner.setBannerTitle(titles);
+//        banner.setImages(resIds);
+//    }
+
 }

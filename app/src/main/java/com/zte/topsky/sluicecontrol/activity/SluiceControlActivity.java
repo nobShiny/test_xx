@@ -6,8 +6,6 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.CompoundButton;
-import android.widget.Toast;
 
 import com.zhy.adapter.recyclerview.CommonAdapter;
 import com.zhy.adapter.recyclerview.base.ViewHolder;
@@ -139,17 +137,4 @@ public class SluiceControlActivity extends BaseActivity {
         return list;
     }
 
-    private class SwitchCheckedChangeListener implements CompoundButton.OnCheckedChangeListener, View.OnClickListener {
-
-        @Override
-        public void onClick(View v) {
-
-
-        }
-
-        @Override
-        public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-            Toast.makeText(SluiceControlActivity.this, "isChecked:" + isChecked, Toast.LENGTH_SHORT).show();
-        }
-    }
 }

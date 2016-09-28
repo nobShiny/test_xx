@@ -22,7 +22,7 @@ import java.util.List;
 
 import butterknife.BindView;
 
-public class MainActivity extends BaseActivity {
+public class MainActivity extends BaseActivity /*implements NewsFragment.DataListener*/{
 
     private Context mContext;
     private AppFragmentAdapter mAdapter;
