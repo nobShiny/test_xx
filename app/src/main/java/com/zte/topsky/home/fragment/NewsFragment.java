@@ -31,8 +31,6 @@ import butterknife.ButterKnife;
 public class NewsFragment extends BaseFragment {
     private static final String KEY_CONTENT = "HomeFragment";
     private String mContent = "???";
-//    @BindView(R.id.banner)
-//    Banner banner;
     private static Context mContext;
     @BindView(R.id.rl_news_list)
     RecyclerView rlNewsList;

@@ -19,7 +19,7 @@ import butterknife.ButterKnife;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
- * Created by wuyexiong on 4/25/15.
+ * Created by shiny.
  */
 public class MineFragment extends BaseFragment {
     private static final String KEY_CONTENT = "MineFragment";

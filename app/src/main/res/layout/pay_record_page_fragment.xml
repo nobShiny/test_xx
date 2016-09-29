@@ -4,4 +4,17 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:layout_margin="10dp"
+        android:gravity="center"
+        android:text="充值记录"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rl_pay_record"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
 </LinearLayout>
