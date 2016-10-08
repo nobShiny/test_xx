@@ -29,7 +29,7 @@ import butterknife.ButterKnife;
  * Created by wuyexiong on 4/25/15.
  */
 public class NewsFragment extends BaseFragment {
-    private static final String KEY_CONTENT = "HomeFragment";
+    private static final String KEY_CONTENT = "NewsFragment";
     private String mContent = "???";
     private static Context mContext;
     @BindView(R.id.rl_news_list)
@@ -63,7 +63,6 @@ public class NewsFragment extends BaseFragment {
     }
 
     private void initView(View layout) {
-//        initBanner(layout);
         mList = textData();
         rlNewsList.setLayoutManager(new LinearLayoutManager(mContext));
         rlNewsList.addItemDecoration(new DividerItemDecoration(mContext, DividerItemDecoration.VERTICAL_LIST));
@@ -78,7 +77,6 @@ public class NewsFragment extends BaseFragment {
         mAdapter.setOnItemClickListener(new MultiItemTypeAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, RecyclerView.ViewHolder holder, int position) {
-//                Urllistener.sendURL(mList.get(position).getUrl());
                 Intent intent = new Intent(mContext, NewActivity.class);
                 intent.putExtra("url",mList.get(position).getUrl());
                 startActivity(intent);
@@ -157,36 +155,11 @@ public class NewsFragment extends BaseFragment {
     @Override
     public void onPause() {
         super.onPause();
-//        banner.isAutoPlay(false);
     }
 
     //    public interface DataListener {
 //        void sendURL(String url);
 //    }
 
-//    @Override
-//    public void onAttach(Activity activity) {
-//        super.onAttach(activity);
-//        try {
-//            Urllistener = (DataListener) activity;
-//        } catch (ClassCastException e) {
-//            throw new ClassCastException(activity.toString()
-//                    + " must implement DataListener");
-//        }
-//    }
-
-    //    private void initBanner(View layout) {
-//        banner.isAutoPlay(true);
-//        TypedArray images = this.getResources().obtainTypedArray(R.array.banner_images);
-//        Integer[] resIds = new Integer[images.length()];
-//        for (int i = 0; i < images.length(); i++) {
-//            resIds[i] = images.getResourceId(i, 0);
-//        }
-//        images.recycle();
-//        String[] titles = this.getResources().getStringArray(R.array.title);
-//        banner.setBannerStyle(BannerConfig.CIRCLE_INDICATOR_TITLE_INSIDE);
-//        banner.setBannerTitle(titles);
-//        banner.setImages(resIds);
-//    }
 
 }

@@ -42,12 +42,6 @@ public class PayActivity extends BaseActivity {
             payFragment = new PayFragment();
             payRecordFragment = new PayRecordFragment();
         }
-//        if (findViewById(R.id.pay_container) != null&& savedInstanceState == null) {
-//            menuFragment = new MenuFragment();
-//            getSupportFragmentManager().beginTransaction()
-//                    .add(R.id.pay_container, menuFragment).commit();
-
-//        }
     }
 
     @OnClick({R.id.btn_pay, R.id.btn_record})

@@ -9,9 +9,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
+import com.youth.banner.loader.ImageLoader;
 import com.zte.topsky.R;
 import com.zte.topsky.base.fragment.BaseFragment;
 import com.zte.topsky.chartdata.activity.RainFallDataActivity;
@@ -27,6 +30,7 @@ import com.zte.topsky.sluicecontrol.activity.SluiceControlActivity;
 import com.zte.topsky.weatherdata.activity.WeatherDateActivity;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 
 import butterknife.BindView;
@@ -201,8 +205,9 @@ public class HomeFragment extends BaseFragment {
         images.recycle();
         String[] titles = this.getResources().getStringArray(R.array.title);
         banner.setBannerStyle(BannerConfig.CIRCLE_INDICATOR_TITLE_INSIDE);
-        banner.setBannerTitle(titles);
-        banner.setImages(resIds);
+        banner.setBannerTitles(Arrays.asList(titles));
+        banner.setImages(Arrays.asList(resIds)).setImageLoader(new GlideImageLoader());
+        banner.start();
     }
 
     @Override
@@ -230,12 +235,19 @@ public class HomeFragment extends BaseFragment {
     @Override
     public void onResume() {
         super.onResume();
-        banner.isAutoPlay(true);
+        banner.startAutoPlay();
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        banner.isAutoPlay(false);
+        banner.stopAutoPlay();
+    }
+
+    class GlideImageLoader implements ImageLoader {
+        @Override
+        public void displayImage(Context context, Object path, ImageView imageView) {
+            Glide.with(context).load(path).into(imageView);
+        }
     }
 }
