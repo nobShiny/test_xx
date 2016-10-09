@@ -58,6 +58,13 @@ public class HomeFragment extends BaseFragment {
             {"灌溉统计","警告"},
             {"在线购水",""}};
 
+    private int[] iconId = {R.drawable.ic_home_item_weather,
+            R.drawable.ic_home_item_data,
+            R.drawable.ic_home_item_sluice,
+            R.drawable.ic_home_item_monitor,
+            R.drawable.ic_home_item_statics,
+            R.drawable.ic_home_item_pay};
+
     private ArrayList<GridCutItem> mDatas = new ArrayList<>();
     private CommonAdapter mAdapter;
 
@@ -104,11 +111,12 @@ public class HomeFragment extends BaseFragment {
             @Override
             public void convert(ViewHolder helper, final GridCutItem item, int position) {
                 helper.setText(R.id.tv_item, item.getName());
+                helper.setImageResource(R.id.iv_item_icon,iconId[position]);
                 viewWithSign = helper.getView(R.id.icon);
                 viewWithSign.addDrawText(item.getTip());
-                if (position == mAdapter.getCount() - 1) {
+//                if (position == mAdapter.getCount() - 1) {
 //                    helper.setImageResource(R.id.iv_item, R.drawable.add_more);
-                }
+//                }
             }
         });
 

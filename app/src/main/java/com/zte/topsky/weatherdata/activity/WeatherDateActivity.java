@@ -15,6 +15,13 @@ public class WeatherDateActivity extends BaseActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState, R.layout.activity_weather);
+        addActivity(this);
+        if (savedInstanceState == null) {
+            initView();
+        }
+    }
+
+    private void initView() {
 
     }
 

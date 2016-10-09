@@ -5,9 +5,10 @@
     android:fitsSystemWindows="true"
     android:orientation="vertical">
 
-    <TextView
+    <com.zte.topsky.weatherdata.view.SoilLineChartView
+        android:id="@+id/chart"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="天气信息"/>
+        android:layout_height="match_parent"
+        />
 
 </LinearLayout>
