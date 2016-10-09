@@ -24,6 +24,7 @@ import com.zte.topsky.home.bean.GridCutItem;
 import com.zte.topsky.home.customui.homeScrollView.ControlScrollView;
 import com.zte.topsky.home.customui.homeScrollView.DragGridView;
 import com.zte.topsky.home.customui.homeScrollView.ViewWithSign;
+import com.zte.topsky.irrigate.activity.IrrigateCountActivity;
 import com.zte.topsky.monitor.activity.MonitorActivity;
 import com.zte.topsky.pay.activity.PayActivity;
 import com.zte.topsky.sluicecontrol.activity.SluiceControlActivity;
@@ -181,8 +182,8 @@ public class HomeFragment extends BaseFragment {
                         startActivity(monitor_intent);
                         break;
                     case 4:
-//                        Intent monitor_intent = new Intent(getContext(), MonitorActivity.class);
-//                        startActivity(monitor_intent);
+                        Intent irrigate_intent = new Intent(getContext(), IrrigateCountActivity.class);
+                        startActivity(irrigate_intent);
                         break;
                     case 5:
                         Intent pay_intent = new Intent(getContext(), PayActivity.class);

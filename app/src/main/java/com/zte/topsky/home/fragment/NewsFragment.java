@@ -35,7 +35,6 @@ public class NewsFragment extends BaseFragment {
     @BindView(R.id.rl_news_list)
     RecyclerView rlNewsList;
 
-//    public DataListener Urllistener;
     private CommonAdapter<String> mAdapter;
     private List<News> mList;
 
