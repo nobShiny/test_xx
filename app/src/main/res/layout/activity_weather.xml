@@ -8,7 +8,25 @@
     <com.zte.topsky.weatherdata.view.SoilLineChartView
         android:id="@+id/chart"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.5"
+        android:layout_marginTop="10dp"
         />
+
+    <Button
+        android:id="@+id/btn_date"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:layout_weight="0.2"
+        android:text="按日期选择查看"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rl_chart_line"
+        android:layout_width="match_parent"
+        android:layout_margin="8dp"
+        android:layout_height="0dp"
+        android:layout_weight="0.8"/>
+
 
 </LinearLayout>
