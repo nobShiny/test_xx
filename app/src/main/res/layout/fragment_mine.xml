@@ -49,8 +49,9 @@
         android:orientation="vertical">
 
         <LinearLayout
+            android:id="@+id/ll_monitor_bind"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="80dp"
             android:gravity="center"
             android:orientation="horizontal"
             android:padding="10dp">
@@ -73,8 +74,9 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/ll_shaft_bind"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="80dp"
             android:gravity="center"
             android:orientation="horizontal"
             android:padding="10dp"
