@@ -49,7 +49,7 @@ public class MainActivity extends BaseActivity /*implements NewsFragment.DataLis
     }
 
     private void initView() {
-
+        toolbar.setTitle("asdasd");
     }
 
     private void initFragment() {

@@ -32,7 +32,6 @@ public class BindMonitorActivity extends BaseActivity {
         super.onCreate(savedInstanceState, R.layout.activity_bind_monitor);
         addActivity(this);
         if (savedInstanceState == null) {
-
         }
     }
 

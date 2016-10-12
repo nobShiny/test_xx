@@ -4,11 +4,10 @@ import android.app.Activity;
 import android.app.ActivityManager;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.view.Window;
-import android.view.WindowManager;
 
 import java.util.Stack;
 
@@ -26,10 +25,10 @@ public class BaseActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState, int layoutResID) {
         super.onCreate(savedInstanceState);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.KITKAT) {
-            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
-        }
+//        if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.KITKAT) {
+//            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+//            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+//        }
         setContentView(layoutResID);
         ButterKnife.bind(this);
         context = getApplicationContext();
@@ -121,6 +120,10 @@ public class BaseActivity extends AppCompatActivity {
             System.exit(0);
         } catch (Exception e) {
         }
+    }
+
+    public void back(View view) {
+        finish();
     }
 
 }

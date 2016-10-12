@@ -6,6 +6,8 @@
     android:orientation="vertical"
     android:fitsSystemWindows="true">
 
+    <include layout="@layout/layout_back"/>
+
     <SurfaceView
         android:id="@+id/sv_view_content"
         android:layout_width="match_parent"

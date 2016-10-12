@@ -5,6 +5,7 @@
     android:layout_height="@dimen/notice_height"
     android:padding="6dp"
     android:background="#33000000"
+    android:layout_marginTop="?actionBarSize"
     android:orientation="horizontal">
 
     <ImageView

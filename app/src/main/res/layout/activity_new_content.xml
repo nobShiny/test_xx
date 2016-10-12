@@ -7,6 +7,8 @@
     android:orientation="vertical"
     tools:context=".news.activity.NewActivity">
 
+    <include layout="@layout/layout_back"/>
+
     <WebView
         android:id="@+id/wv_news_content"
         android:layout_width="match_parent"

@@ -11,7 +11,8 @@
         android:layout_width="32dp"
         android:layout_height="28dp"
         android:layout_gravity="center_horizontal"
-        android:scaleType="fitXY" />
+        android:scaleType="fitCenter"
+        />
 
     <TextView
         android:id="@+id/main_bottom_tab_text"
@@ -19,7 +20,7 @@
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:textColor="@color/main_bottom_tab_textcolor_normal"
-        android:textSize="12.5sp" />
+        android:textSize="14sp" />
 
 </LinearLayout>
 
