@@ -24,4 +24,9 @@ public class RainFallDataActivity extends BaseActivity {
         super.onCreate(savedInstanceState, R.layout.activity_rainfall);
         addActivity(this);
     }
+
+    @Override
+    public void onBackPressed() {
+        finishActivity();
+    }
 }

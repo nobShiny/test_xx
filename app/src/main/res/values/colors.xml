@@ -1,19 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorPrimary">#259CD6</color>
+    <color name="colorPrimaryDark">#259CD6</color>
     <color name="colorAccent">#FF4081</color>
-    <color name="theme_color">#ffffff</color>
+    <color name="theme_color">#f4f4f4</color>
+    <color name="bg_bottom_color">#d9d9d9</color>
 
     <color name="default_circle_indicator_stroke_color">#FFDDDDDD</color>
     <color name="default_circle_indicator_fill_color">#FFFFFFFF</color>
     <color name="default_circle_indicator_page_color">#00000000</color>
 
     <color name="main_bottom_tab_textcolor_normal">#999999</color>
-    <color name="main_bottom_tab_textcolor_selected">#46c01b</color>
+    <color name="main_bottom_tab_textcolor_selected">#259CD6</color>
 
     <color name="white">#FFFFFFFF</color>
     <color name="signColor">#ea5f61</color>
+    <color name="home_action_text_color">#7d7676</color>
     <color name="listTextColor">#0f0f0f</color>
 
     <color name="window_background_gradient_start_color">#ff17a1c4</color>

@@ -51,18 +51,19 @@ public class HomeFragment extends BaseFragment {
     @BindView(R.id.banner)
     Banner banner;
 
-    private String[][] gridDatas = {{"气象",""},
-            {"数据",""},
-            {"阀门管理",""},
-            {"监控",""},
-            {"灌溉统计","警告"},
-            {"在线购水",""}};
+    private String[][] gridDatas = {{"气象", ""},
+            {"数据", ""},
+            {"阀门管理", ""},
+            {"监控", ""},
+            {"灌溉统计", ""},
+            {"在线购水", ""}
+    };
 
     private int[] iconId = {R.drawable.ic_home_item_weather,
-            R.drawable.ic_home_item_data,
+            R.drawable.ic_home_item_statics,
             R.drawable.ic_home_item_sluice,
             R.drawable.ic_home_item_monitor,
-            R.drawable.ic_home_item_statics,
+            R.drawable.ic_home_item_data,
             R.drawable.ic_home_item_pay};
 
     private ArrayList<GridCutItem> mDatas = new ArrayList<>();
@@ -88,7 +89,7 @@ public class HomeFragment extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View layout = inflater.inflate(R.layout.fragment_home, null);
-        ButterKnife.bind(this,layout);
+        ButterKnife.bind(this, layout);
         initView(layout);
         return layout;
     }
@@ -111,7 +112,7 @@ public class HomeFragment extends BaseFragment {
             @Override
             public void convert(ViewHolder helper, final GridCutItem item, int position) {
                 helper.setText(R.id.tv_item, item.getName());
-                helper.setImageResource(R.id.iv_item_icon,iconId[position]);
+                helper.setImageResource(R.id.iv_item_icon, iconId[position]);
                 viewWithSign = helper.getView(R.id.icon);
                 viewWithSign.addDrawText(item.getTip());
 //                if (position == mAdapter.getCount() - 1) {
@@ -172,7 +173,7 @@ public class HomeFragment extends BaseFragment {
         grid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                switch (i){
+                switch (i) {
                     case 0:
                         Intent rainfall_intent = new Intent(getContext(), RainFallDataActivity.class);
                         startActivity(rainfall_intent);
