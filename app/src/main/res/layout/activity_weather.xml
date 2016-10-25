@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
+    android:background="@color/theme_color"
     android:orientation="vertical">
 
     <include layout="@layout/layout_back"/>
@@ -11,16 +12,32 @@
         android:id="@+id/chart"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1.5"
-        android:layout_marginTop="10dp"
+        android:layout_weight="1"
+        android:paddingTop="10dp"
+        android:background="@color/white"
         />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.15"
+        android:text="时段数据"
+        android:paddingLeft="20dp"
+        android:gravity="center_vertical"
+        android:textSize="16sp"
+        android:textColor="@color/white"
+        android:background="@color/time_bg_color"/>
 
     <Button
         android:id="@+id/btn_date"
-        android:layout_width="match_parent"
+        android:layout_width="200dp"
         android:layout_height="0dp"
+        android:layout_gravity="center"
         android:gravity="center"
-        android:layout_weight="0.2"
+        android:layout_weight="0.1"
+        android:textColor="@color/white"
+        android:background="#269CD2"
+        android:layout_marginTop="4dp"
         android:text="按日期选择查看"/>
 
     <android.support.v7.widget.RecyclerView
@@ -28,7 +45,7 @@
         android:layout_width="match_parent"
         android:layout_margin="8dp"
         android:layout_height="0dp"
-        android:layout_weight="0.8"/>
+        android:layout_weight="0.6"/>
 
 
 </LinearLayout>

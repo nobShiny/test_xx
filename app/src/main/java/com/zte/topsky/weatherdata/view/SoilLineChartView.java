@@ -20,8 +20,11 @@ import org.xclcharts.renderer.info.AnchorDataPoint;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 public class SoilLineChartView extends BaseChartView implements Runnable{
     private String TAG = "LineChart02View";
@@ -31,13 +34,17 @@ public class SoilLineChartView extends BaseChartView implements Runnable{
     private LinkedList<String> labels = new LinkedList<>();
     private LinkedList<LineData> chartData = new LinkedList<>();
     private List<CustomLineData> mCustomLineDataset = new LinkedList<>();
+    private LinkedList<Double> dataSeries1 = new LinkedList<>();
+    private Map<String,Double> mData = new LinkedHashMap<>();
 
     //批注
     List<AnchorDataPoint> mAnchorSet = new ArrayList<>();
 
+    private String mYear;
+    private StringBuilder yearly;
+
     public SoilLineChartView(Context context) {
         super(context);
-        // TODO Auto-generated constructor stub
         initView();
     }
 
@@ -53,14 +60,16 @@ public class SoilLineChartView extends BaseChartView implements Runnable{
 
     private void initView()
     {
+        int currentYear = Calendar.getInstance().get(Calendar.YEAR);
+        getNewData(currentYear+"-"+(currentYear+1) ,mData);
         chartLabels();
         chartDataSet();
         chartDesireLines();
         chartRender();
         new Thread(this).start();
-
         //綁定手势滑动事件
         this.bindTouch(this,chart);
+
     }
 
 
@@ -98,7 +107,8 @@ public class SoilLineChartView extends BaseChartView implements Runnable{
 
             //标题
             chart.setTitle("土壤情况一览");
-            chart.addSubtitle("（2015-2016）");
+            yearly = new StringBuilder("(").append(mYear).append(")");
+            chart.addSubtitle(yearly.toString());
 
             //隐藏顶轴和右边轴
             //chart.hideTopAxis();
@@ -180,19 +190,21 @@ public class SoilLineChartView extends BaseChartView implements Runnable{
     private void chartDataSet()
     {
         //Line 1
-        LinkedList<Double> dataSeries1= new LinkedList<>();
-        dataSeries1.add(40d);
-        dataSeries1.add(48d);
-        dataSeries1.add(50d);
-        dataSeries1.add(56d);
-        dataSeries1.add(46d);
-        dataSeries1.add(50d);
-        dataSeries1.add(56d);
-        dataSeries1.add(46d);
-        dataSeries1.add(36d);
-        dataSeries1.add(56d);
-        dataSeries1.add(60d);
-        dataSeries1.add(58d);
+//        dataSeries1.add(40d);
+//        dataSeries1.add(48d);
+//        dataSeries1.add(50d);
+//        dataSeries1.add(56d);
+//        dataSeries1.add(46d);
+//        dataSeries1.add(50d);
+//        dataSeries1.add(56d);
+//        dataSeries1.add(46d);
+//        dataSeries1.add(36d);
+//        dataSeries1.add(56d);
+//        dataSeries1.add(60d);
+//        dataSeries1.add(58d);
+        for (Double value : mData.values()) {
+            dataSeries1.add(value);
+        }
         LineData lineData1 = new LineData("土壤湿度(单位：%)",dataSeries1, Color.rgb(234, 83, 71));
         lineData1.setDotStyle(XEnum.DotStyle.DOT);
 
@@ -262,21 +274,23 @@ public class SoilLineChartView extends BaseChartView implements Runnable{
         chart.setAnchorDataPoint(mAnchorSet);
     }
 
-    private void chartLabels()
-    {
-        labels.add("8时");
-        labels.add("9时");
-        labels.add("10时");
-        labels.add("11时");
-        labels.add("12时");
-        labels.add("13时");
-        labels.add("14时");
-        labels.add("15时");
-        labels.add("16时");
-        labels.add("17时");
-        labels.add("18时");
-        labels.add("19时");
-        labels.add("20时");
+    private void chartLabels() {
+        for (String key : mData.keySet()) {
+            labels.add(key);
+        }
+//        labels.add("8时");
+//        labels.add("9时");
+//        labels.add("10时");
+//        labels.add("11时");
+//        labels.add("12时");
+//        labels.add("13时");
+//        labels.add("14时");
+//        labels.add("15时");
+//        labels.add("16时");
+//        labels.add("17时");
+//        labels.add("18时");
+//        labels.add("19时");
+//        labels.add("20时");
     }
 
     /**
@@ -356,6 +370,23 @@ public class SoilLineChartView extends BaseChartView implements Runnable{
             }
         }
         return true;
+    }
+
+    public Map<String,Double> getNewData(String year,Map<String,Double> data) {
+        mYear = year;
+        mData = data;
+        mData = new LinkedHashMap();
+        mData.put("1时",40d);
+        mData.put("2时",38d);
+        mData.put("3时",37d);
+        mData.put("4时",36d);
+        mData.put("5时",35d);
+        mData.put("6时",35d);
+        mData.put("7时",36d);
+        mData.put("8时",40d);
+        mData.put("9时",44d);
+        mData.put("10时",50d);
+        return mData;
     }
 
 }

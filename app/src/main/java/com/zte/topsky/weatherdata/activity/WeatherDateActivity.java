@@ -6,14 +6,17 @@ import android.support.v7.widget.RecyclerView;
 import android.view.Gravity;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.Toast;
 
 import com.zte.topsky.R;
 import com.zte.topsky.base.activity.BaseActivity;
+import com.zte.topsky.weatherdata.view.DataPickerBG;
 import com.zte.topsky.weatherdata.view.SoilLineChartView;
+
+import java.util.Calendar;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import cn.aigestudio.datepicker.bizs.themes.DPTManager;
 import cn.aigestudio.datepicker.cons.DPMode;
 import cn.aigestudio.datepicker.views.DatePicker;
 
@@ -24,13 +27,22 @@ import cn.aigestudio.datepicker.views.DatePicker;
 
 public class WeatherDateActivity extends BaseActivity {
 
-    @BindView(R.id.chart)
-    SoilLineChartView chart;
     @BindView(R.id.btn_date)
     Button btnDate;
     @BindView(R.id.rl_chart_line)
     RecyclerView rlChartLine;
     private DatePicker picker;
+
+    private String[] str;
+    private int currentYear;
+    private int currentMonth;
+    private int currentDay;
+
+    private StringBuilder selectYear;
+    private StringBuilder selectMonth;
+    private StringBuilder selectDay;
+
+//    private Map<String,Double> mData ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,8 +53,22 @@ public class WeatherDateActivity extends BaseActivity {
         }
     }
 
+    @BindView(R.id.chart)
+    SoilLineChartView chart;
     private void initView() {
+        DPTManager.getInstance().initCalendar(new DataPickerBG());
+        getCurrentData();
+//        mData = getNewData();
+//        if (mData.size()>0||mData!=null) {
+//            chart = new SoilLineChartView(this,currentYear+"-"+(currentYear+1) ,mData);
+//        }
+    }
 
+    private void getCurrentData() {
+        Calendar calendar = Calendar.getInstance();
+        currentYear = calendar.get(Calendar.YEAR);
+        currentMonth = calendar.get(Calendar.MONTH);
+        currentDay = calendar.get(Calendar.HOUR_OF_DAY);
     }
 
     @OnClick(R.id.btn_date)
@@ -58,17 +84,20 @@ public class WeatherDateActivity extends BaseActivity {
 
     private DatePicker initDatePicker(final AlertDialog dialog) {
         picker = new DatePicker(WeatherDateActivity.this);
-        picker.setDate(2016, 10);
+        picker.setDate(currentYear, currentMonth);
         picker.setMode(DPMode.SINGLE);
+        picker.setFestivalDisplay(false);
+        picker.setTodayDisplay(false);
         picker.setOnDatePickedListener(new DatePicker.OnDatePickedListener() {
             @Override
             public void onDatePicked(String date) {
-                Toast.makeText(WeatherDateActivity.this, date, Toast.LENGTH_LONG).show();
+                str = date.split("-");
+                picker.setDate(Integer.valueOf(str[0]),Integer.valueOf(str[1]));
+                btnDate.setText(str[0]+"年"+str[1]+"月"+str[2]+"日");
                 dialog.dismiss();
             }
         });
         return picker;
     }
-
 
 }

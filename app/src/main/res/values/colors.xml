@@ -21,4 +21,8 @@
     <color name="window_background_gradient_start_color">#ff17a1c4</color>
     <color name="window_background_gradient_end_color">#ff9c6ddc</color>
 
+    <color name="time_bg_color">#26B7D6</color>
+
+
+
 </resources>
