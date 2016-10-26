@@ -32,7 +32,6 @@ import com.zte.topsky.weatherdata.activity.WeatherDateActivity;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -122,7 +121,7 @@ public class HomeFragment extends BaseFragment {
         });
 
         //设置拖拽数据交换
-        grid.setOnChangeListener(new DragGridView.OnChangeListener() {
+        /*grid.setOnChangeListener(new DragGridView.OnChangeListener() {
             @Override
             public void onChange(int from, int to) {
                 GridCutItem temp = mDatas.get(from);
@@ -138,7 +137,7 @@ public class HomeFragment extends BaseFragment {
                 mDatas.set(to, temp);
                 mAdapter.notifyDataSetChanged();
             }
-        });
+        });*/
         mAdapter.notifyDataSetChanged();
         scroller.setScrollState(new ControlScrollView.ScrollState() {
             @Override
@@ -157,7 +156,6 @@ public class HomeFragment extends BaseFragment {
             public void onDragStart() {
                 scroller.requestDisallowInterceptTouchEvent(true);
                 scroller.setInControl(false);
-//                ((MainActivity) getContext()).setViewpagerNoSCroll(true);
             }
         });
         grid.setOnDragEndListener(new DragGridView.OnDragEndListener() {
@@ -165,7 +163,6 @@ public class HomeFragment extends BaseFragment {
             public void onDragEnd() {
                 scroller.requestDisallowInterceptTouchEvent(false);
                 scroller.setInControl(true);
-//                ((MainActivity) getContext()).setViewpagerNoSCroll(false);
                 grid.postInvalidate();
             }
         });

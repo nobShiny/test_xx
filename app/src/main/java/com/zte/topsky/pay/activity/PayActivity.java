@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.zte.topsky.R;
 import com.zte.topsky.base.activity.BaseActivity;
@@ -29,6 +30,9 @@ public class PayActivity extends BaseActivity {
     Button btnRecord;
     @BindView(R.id.ll_function_list)
     LinearLayout llFunctionList;
+    @BindView(R.id.tv_title_text)
+    TextView tvTitleText;
+
     private PayFragment payFragment;
     private PayRecordFragment payRecordFragment;
     private FragmentTransaction transaction;
@@ -37,8 +41,9 @@ public class PayActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState, R.layout.activity_pay);
         addActivity(this);
+        transaction = getSupportFragmentManager().beginTransaction();
         if (savedInstanceState == null) {
-            transaction = getSupportFragmentManager().beginTransaction();
+            tvTitleText.setText("在线购水");
             payFragment = new PayFragment();
             payRecordFragment = new PayRecordFragment();
         }
@@ -48,16 +53,21 @@ public class PayActivity extends BaseActivity {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_pay:
-                llFunctionList.setVisibility(View.GONE);
-                transaction.add(R.id.pay_container, payFragment)
-                        .addToBackStack(null).commit();
-//                switchContent(this,payFragment);
+                if (!payFragment.isAdded()) {    // 先判断是否被add过
+                    transaction.add(R.id.pay_container, payFragment)
+                            .addToBackStack(null).commit();
+                }else{
+                    transaction.show(payFragment);
+                }
+
                 break;
             case R.id.btn_record:
-                llFunctionList.setVisibility(View.GONE);
-                transaction.add(R.id.pay_container, payRecordFragment)
-                        .addToBackStack(null).commit();
-//                switchContent(this,payRecordFragment);
+                if (!payRecordFragment.isAdded()) {    // 先判断是否被add过
+                    transaction.add(R.id.pay_container, payRecordFragment)
+                            .addToBackStack(null).commit();
+                }else{
+                    transaction.show(payFragment);
+                }
                 break;
         }
     }
@@ -73,8 +83,12 @@ public class PayActivity extends BaseActivity {
     }
 
     @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        llFunctionList.setVisibility(View.VISIBLE);
+    protected void onRestart() {
+        super.onRestart();
+        if (payFragment==null&&payRecordFragment==null) {
+            transaction = getSupportFragmentManager().beginTransaction();
+            payFragment = new PayFragment();
+            payRecordFragment = new PayRecordFragment();
+        }
     }
 }

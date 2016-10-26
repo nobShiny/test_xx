@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.SurfaceView;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.zte.topsky.R;
@@ -31,13 +32,16 @@ public class MonitorActivity extends BaseActivity {
     Button btnControlRight;
     @BindView(R.id.btn_control_down)
     Button btnControlDown;
+    @BindView(R.id.tv_title_text)
+    TextView tvTitleText;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState, R.layout.activity_monitor);
         addActivity(this);
         if (savedInstanceState == null) {
-
+            tvTitleText.setText("监控");
         }
     }
 

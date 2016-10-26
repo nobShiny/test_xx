@@ -5,6 +5,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.zhy.adapter.recyclerview.CommonAdapter;
 import com.zhy.adapter.recyclerview.MultiItemTypeAdapter;
@@ -31,6 +32,9 @@ public class IrrigateCountActivity extends BaseActivity {
     RecyclerView rlIrrigateList;
     @BindView(R.id.ll_notice)
     LinearLayout llNotice;
+    @BindView(R.id.tv_title_text)
+    TextView tvTitleText;
+
     private CommonAdapter<String> mAdapter;
     private List<IrrigateData> mList;
 
@@ -44,6 +48,7 @@ public class IrrigateCountActivity extends BaseActivity {
     }
 
     private void initView() {
+        tvTitleText.setText("灌溉统计");
         mList = textData();
         rlIrrigateList.setLayoutManager(new LinearLayoutManager(this));
         rlIrrigateList.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL_LIST));

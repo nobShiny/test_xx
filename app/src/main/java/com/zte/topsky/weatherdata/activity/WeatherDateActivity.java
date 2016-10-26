@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.Gravity;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.zte.topsky.R;
 import com.zte.topsky.base.activity.BaseActivity;
@@ -27,6 +28,8 @@ import cn.aigestudio.datepicker.views.DatePicker;
 
 public class WeatherDateActivity extends BaseActivity {
 
+    @BindView(R.id.tv_title_text)
+    TextView tvTitleText;
     @BindView(R.id.btn_date)
     Button btnDate;
     @BindView(R.id.rl_chart_line)
@@ -56,6 +59,7 @@ public class WeatherDateActivity extends BaseActivity {
     @BindView(R.id.chart)
     SoilLineChartView chart;
     private void initView() {
+        tvTitleText.setText("数据");
         DPTManager.getInstance().initCalendar(new DataPickerBG());
         getCurrentData();
 //        mData = getNewData();

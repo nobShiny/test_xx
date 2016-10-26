@@ -14,13 +14,12 @@
         android:gravity="center"
         android:background="@drawable/banner3"
         android:orientation="vertical">
-
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/mine_user_image"
-            android:layout_height="100dp"
-            android:layout_width="100dp"
+            android:layout_height="140dp"
+            android:layout_width="140dp"
             android:padding="20dp"
-            android:src="@drawable/btn"
+            android:src="@drawable/default_master"
             app:civ_border_color="#CCC"
             app:civ_border_width="1dp" />
 
@@ -37,6 +36,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="8dp"
                 android:layout_weight="1"
+                android:textColor="@color/white"
                 android:gravity="right"
                 android:text="登录/"
                 android:textSize="18sp" />
@@ -46,6 +46,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:textColor="@color/white"
                 android:text="注册"
                 android:textSize="18sp" />
         </LinearLayout>

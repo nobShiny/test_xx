@@ -51,16 +51,15 @@
         <com.zte.topsky.home.customui.homeScrollView.ControlScrollView
             android:id="@+id/scroller"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/grey_700"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginTop="10dp"
             android:scrollbars="none">
 
             <com.zte.topsky.home.customui.homeScrollView.DragGridView
                 android:id="@+id/grid"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:layout_margin="10dp"
+                android:layout_height="match_parent"
                 android:horizontalSpacing="4dp"
                 android:listSelector="#ffffff"
                 android:numColumns="3"

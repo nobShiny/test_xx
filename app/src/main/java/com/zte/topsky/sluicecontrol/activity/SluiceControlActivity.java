@@ -6,6 +6,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.TextView;
 
 import com.zhy.adapter.recyclerview.CommonAdapter;
 import com.zhy.adapter.recyclerview.base.ViewHolder;
@@ -28,6 +29,9 @@ public class SluiceControlActivity extends BaseActivity {
 
     @BindView(R.id.pump_recycler_list)
     RecyclerView pump_recycler_list;
+    @BindView(R.id.tv_title_text)
+    TextView tvTitleText;
+
     private List<PumpData> list;
 
     @Override
@@ -38,6 +42,7 @@ public class SluiceControlActivity extends BaseActivity {
     }
 
     private void initView() {
+        tvTitleText.setText("阀门控制");
         list = textData();
         pump_recycler_list.setLayoutManager(new LinearLayoutManager(this));
         pump_recycler_list.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL_LIST));

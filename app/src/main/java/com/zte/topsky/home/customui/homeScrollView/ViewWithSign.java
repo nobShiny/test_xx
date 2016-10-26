@@ -87,7 +87,7 @@ public class ViewWithSign extends LinearLayout {
         canvas.rotate(-45, dis, dis);
         canvas.restore();
     }
-
+/*
     @SuppressWarnings("unused")
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
@@ -108,5 +108,5 @@ public class ViewWithSign extends LinearLayout {
         width = getWidth();
         paintMiddle = width / 5;
         startDis = width / 4;
-    }
+    }*/
 }

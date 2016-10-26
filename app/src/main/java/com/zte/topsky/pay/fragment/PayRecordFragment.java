@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.zhy.adapter.recyclerview.CommonAdapter;
 import com.zhy.adapter.recyclerview.base.ViewHolder;
@@ -19,6 +20,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * Created by NobShiny
@@ -29,6 +31,8 @@ public class PayRecordFragment extends Fragment {
 
     @BindView(R.id.rl_pay_record)
     RecyclerView rlPayRecord;
+    @BindView(R.id.iv_back)
+    ImageView ivBack;
 
     private List<PayRecord> mList;
 
@@ -41,11 +45,11 @@ public class PayRecordFragment extends Fragment {
         mList = getTestData();
         rlPayRecord.setLayoutManager(new LinearLayoutManager(getActivity()));
         rlPayRecord.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL_LIST));
-        rlPayRecord.setAdapter(new CommonAdapter(getActivity(), R.layout.item_pay_record, mList) {
+        rlPayRecord.setAdapter(new CommonAdapter(getContext(), R.layout.item_pay_record, mList) {
             @Override
             protected void convert(ViewHolder holder, Object o, int position) {
-                holder.setText(R.id.tv_pay_record_date,mList.get(position).getDate());
-                holder.setText(R.id.tv_pay_record_amount,mList.get(position).getAmount());
+                holder.setText(R.id.tv_pay_record_date, mList.get(position).getDate());
+                holder.setText(R.id.tv_pay_record_amount, mList.get(position).getAmount());
             }
 
             @Override
@@ -82,5 +86,10 @@ public class PayRecordFragment extends Fragment {
         mList.add(bean4);
         mList.add(bean5);
         return mList;
+    }
+
+    @OnClick(R.id.iv_back)
+    public void onClick() {
+        getFragmentManager().popBackStack();
     }
 }
