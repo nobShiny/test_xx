@@ -4,29 +4,35 @@
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginTop="2dp"
+    android:layout_marginBottom="2dp"
     card_view:cardBackgroundColor="@color/white">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
         android:orientation="horizontal"
         android:padding="8dp">
 
         <TextView
             android:id="@+id/tv_news_title"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:textSize="16sp"
             android:textColor="@color/listTextColor"
+            android:ellipsize="end"
             tools:text="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx" />
 
         <TextView
             android:id="@+id/tv_news_time"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_marginLeft="8dp"
             android:layout_weight="0.4"
-            android:gravity="right"
+            android:gravity="right|center_vertical"
+            android:textSize="16sp"
             android:textColor="@color/listTextColor"
             tools:text="2016-12-15" />
     </LinearLayout>

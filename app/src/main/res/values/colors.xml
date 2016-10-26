@@ -18,6 +18,11 @@
     <color name="home_action_text_color">#7d7676</color>
     <color name="listTextColor">#0f0f0f</color>
 
+    <color name="message_is_read_view_color">#acacac</color>
+    <color name="message_no_read_view_color">#67C924</color>
+    <color name="message_is_read_text_color">#999999</color>
+    <color name="message_no_read_text_color">#0f0f0f</color>
+
     <color name="window_background_gradient_start_color">#ff17a1c4</color>
     <color name="window_background_gradient_end_color">#ff9c6ddc</color>
 

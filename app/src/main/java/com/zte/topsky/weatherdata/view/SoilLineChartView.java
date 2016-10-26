@@ -278,19 +278,6 @@ public class SoilLineChartView extends BaseChartView implements Runnable{
         for (String key : mData.keySet()) {
             labels.add(key);
         }
-//        labels.add("8时");
-//        labels.add("9时");
-//        labels.add("10时");
-//        labels.add("11时");
-//        labels.add("12时");
-//        labels.add("13时");
-//        labels.add("14时");
-//        labels.add("15时");
-//        labels.add("16时");
-//        labels.add("17时");
-//        labels.add("18时");
-//        labels.add("19时");
-//        labels.add("20时");
     }
 
     /**

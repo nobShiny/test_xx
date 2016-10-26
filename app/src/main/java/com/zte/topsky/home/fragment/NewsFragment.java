@@ -99,7 +99,7 @@ public class NewsFragment extends BaseFragment {
 
         News news2 = new News();
         news2.setTitle("第七届中瑞水管理高层对话会在京召开");
-        news2.setTime("2016-9-1");
+        news2.setTime("2016-09-01");
         news2.setUrl("http://mp.weixin.qq.com/s?__biz=MzIwNjUyNTY5NA==&mid=100000054&idx=1&sn=5aaf13d209ea904e41ef80ae502d226e&scene=18#wechat_redirect");
         mList.add(news2);
 

@@ -2,13 +2,44 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/theme_color"
     android:fitsSystemWindows="true"
     android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/ll_home_notice"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/notice_height"
+        android:background="#33000000"
+        android:orientation="horizontal"
+        android:padding="6dp">
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/ic_notice" />
+
+        <com.zte.topsky.common.uikit.NoticeTextView
+            android:id="@+id/tv_notice_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:ellipsize="marquee"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:text="灌溉预警信息：根据土壤湿度检测，您的土地土壤水分已经不足30%，请尽快进行灌溉。"
+            android:textColor="@color/signColor"
+            android:textSize="16sp" />
+
+    </LinearLayout>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rl_messages_list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:background="@color/white" />
 
 </LinearLayout>

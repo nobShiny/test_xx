@@ -42,33 +42,33 @@
                 android:focusableInTouchMode="true"
                 android:gravity="center_vertical"
                 android:maxLines="1"
-                android:text="灌溉预警信息,哇啦哇啦累啊啦啦啦靓阿塞阿达打算非给过去我过去去"
+                android:text="灌溉预警信息：根据土壤湿度检测，您的土地土壤水分已经不足30%，请尽快进行灌溉。"
                 android:textColor="@color/signColor"
                 android:textSize="16sp" />
 
         </LinearLayout>
 
-        <com.zte.topsky.home.customui.homeScrollView.DragGridView
-            android:id="@+id/grid"
+        <com.zte.topsky.home.customui.homeScrollView.ControlScrollView
+            android:id="@+id/scroller"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_margin="10dp"
-            android:listSelector="#ffffff"
-            android:numColumns="3"
-            android:scrollbars="none"
-            android:horizontalSpacing="4dp"
-            android:verticalSpacing="4dp" />
+            android:background="@color/grey_700"
+            android:scrollbars="none">
+
+            <com.zte.topsky.home.customui.homeScrollView.DragGridView
+                android:id="@+id/grid"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_margin="10dp"
+                android:horizontalSpacing="4dp"
+                android:listSelector="#ffffff"
+                android:numColumns="3"
+                android:scrollbars="none"
+                android:verticalSpacing="4dp" />
+
+        </com.zte.topsky.home.customui.homeScrollView.ControlScrollView>
     </LinearLayout>
-
-    <com.zte.topsky.home.customui.homeScrollView.ControlScrollView
-        android:id="@+id/scroller"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:scrollbars="none">
-
-
-    </com.zte.topsky.home.customui.homeScrollView.ControlScrollView>
 
 
 </LinearLayout>

@@ -3,6 +3,7 @@ package com.zte.topsky.bind.activity;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.zte.topsky.R;
@@ -28,13 +29,15 @@ public class BindShaftActivity extends BaseActivity {
     EditText etId;
     @BindView(R.id.btn_confirm)
     Button btnConfirm;
+    @BindView(R.id.tv_title_text)
+    TextView title;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState, R.layout.activity_bind_shaft);
         addActivity(this);
         if (savedInstanceState == null) {
-
+            title.setText("机井绑定");
         }
     }
 

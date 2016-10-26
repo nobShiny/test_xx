@@ -18,6 +18,7 @@ import com.zte.topsky.common.utils.DividerItemDecoration;
 import com.zte.topsky.message.bean.Messages;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import butterknife.BindView;
@@ -67,16 +68,34 @@ public class MessagesFragment extends BaseFragment {
         mAdapter = new CommonAdapter(mContext, R.layout.item_messages, mList) {
             @Override
             protected void convert(ViewHolder holder, Object o, int position) {
+                if (mList.get(position).isRead) {
+                    holder.setTextColor(R.id.tv_message_tltle,getActivity().getResources().getColor
+                            (R.color.message_is_read_text_color));
+                    holder.setTextColor(R.id.tv_message_content,getActivity().getResources().
+                            getColor(R.color.message_is_read_text_color));
+                    holder.setBackgroundColor(R.id.iv_isRead,getActivity().getResources().
+                            getColor(R.color.message_is_read_view_color));
+                    holder.setVisible(R.id.iv_isRead,true);
+                }else{
+                    holder.setTextColor(R.id.tv_message_tltle,getActivity().getResources().
+                            getColor(R.color.message_no_read_text_color));
+                    holder.setTextColor(R.id.tv_message_content,getActivity().getResources().
+                            getColor(R.color.message_no_read_text_color));
+                    holder.setBackgroundColor(R.id.iv_isRead,getActivity().getResources().
+                            getColor(R.color.message_no_read_view_color));
+                    holder.setVisible(R.id.iv_isRead,false);
+                }
                 holder.setText(R.id.tv_message_tltle, mList.get(position).getMessageTitle());
                 holder.setText(R.id.tv_message_content, mList.get(position).getMessageContent());
-                holder.setVisible(R.id.iv_isRead,true);
+
             }
         };
         rlMessagesList.setAdapter(mAdapter);
         mAdapter.setOnItemClickListener(new MultiItemTypeAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, RecyclerView.ViewHolder holder, int position) {
-
+                mList.get(position).setRead(true);
+                mAdapter.notifyItemChanged(position);
                 Toast.makeText(mContext, "第"+position+"条已读", Toast.LENGTH_SHORT).show();
             }
 
@@ -89,18 +108,19 @@ public class MessagesFragment extends BaseFragment {
 
     private List<Messages> textMesaageData() {
         mList = new ArrayList<>();
-        Messages m1 = new Messages("充值信息：","您于2016年9月25日充值水费，金额共计400元。",false);
+        Messages m1 = new Messages("充值信息：","您于2016年9月25日充值水费，金额共计400元。详情请咨询0598-996588669",false);
         Messages m2 = new Messages("灌溉提示：","距离您上次灌溉已经34天？",false);
         Messages m3 = new Messages("系统信息：","截止至2016年9月19日，系统没有检测到异常。",false);
-        Messages m4 = new Messages("预警信息：","土壤水分过低，请及时浇水！",false);
-        Messages m5 = new Messages("天气信息：","明天会有短时间暴雨，请及时防范。",false);
-        Messages m6 = new Messages("充值信息：","您于2016年7月25日充值水费，金额共计400元。",false);
+        Messages m4 = new Messages("预警信息：","土壤水分过低，请及时浇水！",true);
+        Messages m5 = new Messages("天气信息：","明天会有短时间暴雨，请及时防范。",true);
+        Messages m6 = new Messages("充值信息：","您于2016年7月25日充值水费，金额共计400元。",true);
         mList.add(m1);
         mList.add(m2);
         mList.add(m3);
         mList.add(m4);
         mList.add(m5);
         mList.add(m6);
+        Collections.reverse(mList);
         return mList;
     }
 
