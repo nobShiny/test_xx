@@ -1,14 +1,18 @@
 package com.zte.topsky.pay.fragment;
 
+import android.content.Context;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.ImageView;
-import android.widget.RadioButton;
+import android.widget.Toast;
 
 import com.zte.topsky.R;
+import com.zte.topsky.base.fragment.BaseFragment;
+import com.zte.topsky.common.utils.OnClickEvent;
+import com.zte.topsky.pay.bean.PaymentWay;
 
 import net.qiujuer.genius.ui.widget.Button;
 
@@ -21,29 +25,105 @@ import butterknife.OnClick;
  * on 2016/9/28 15:34.
  */
 
-public class PayFragment extends Fragment {
+public class PayFragment extends BaseFragment {
 
     @BindView(R.id.iv_back)
     ImageView iv_back;
     @BindView(R.id.rb_check_alipay)
-    RadioButton rbCheckAlipay;
+    CheckBox rbCheckAlipay;
     @BindView(R.id.rb_check_wx)
-    RadioButton rbCheckWx;
+    CheckBox rbCheckWx;
     @BindView(R.id.rb_check_yl)
-    RadioButton rbCheckYl;
+    CheckBox rbCheckYl;
     @BindView(R.id.confirm_pay)
     Button confirmPay;
+
+    private PaymentWay pay;
+
+    private static Context mContext;
+
+    public static PayFragment newInstance(Context context) {
+        PayFragment fragment = new PayFragment();
+        mContext = context;
+        return fragment;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View layout = inflater.inflate(R.layout.pay_page_fragment, null);
         ButterKnife.bind(this, layout);
+        pay = new PaymentWay();
+        rbCheckAlipay.setOnClickListener(new OnClickEvent() {
+            @Override
+            protected void onNoDoubleClick(View v) {
+                rbCheckWx.setChecked(false);
+                rbCheckYl.setChecked(false);
+                pay.setCheck(true);
+                pay.setName("支付宝");
+                if (!rbCheckAlipay.isChecked()) {
+                    pay.setCheck(false);
+                }
+            }
+        });
+
+        rbCheckWx.setOnClickListener(new OnClickEvent() {
+            @Override
+            protected void onNoDoubleClick(View v) {
+                rbCheckYl.setChecked(false);
+                rbCheckAlipay.setChecked(false);
+                pay.setCheck(true);
+                pay.setName("微信");
+                if (!rbCheckWx.isChecked()) {
+                    pay.setCheck(false);
+                }
+            }
+        });
+
+        rbCheckYl.setOnClickListener(new OnClickEvent() {
+            @Override
+            protected void onNoDoubleClick(View v) {
+                rbCheckWx.setChecked(false);
+                rbCheckAlipay.setChecked(false);
+                pay.setCheck(true);
+                pay.setName("银联");
+                if (!rbCheckYl.isChecked()) {
+                    pay.setCheck(false);
+                }
+            }
+        });
         return layout;
     }
 
-    @OnClick(R.id.iv_back)
-    public void onClick() {
-        getFragmentManager().popBackStack();
+    @Override
+    protected int getlayoutId() {
+        return 0;
+    }
+
+    @Override
+    protected void initEventAndData() {
+
+    }
+
+    @Override
+    protected void lazyLoadData() {
+
+    }
+
+
+    @OnClick({R.id.iv_back, R.id.confirm_pay})
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.iv_back:
+                getFragmentManager().popBackStack();
+                break;
+            case R.id.confirm_pay:
+                if (!pay.isCheck()) {
+                    Toast.makeText(mContext, "请选择一种付款方式", Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(mContext, "选择了:"+pay.getName(), Toast.LENGTH_SHORT).show();
+                }
+                break;
+        }
     }
 }

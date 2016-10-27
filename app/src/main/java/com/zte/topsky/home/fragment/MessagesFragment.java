@@ -63,9 +63,9 @@ public class MessagesFragment extends BaseFragment {
 
     private void initView(View layout) {
         mList = textMesaageData();
-        rlMessagesList.setLayoutManager(new LinearLayoutManager(mContext));
-        rlMessagesList.addItemDecoration(new DividerItemDecoration(mContext, DividerItemDecoration.VERTICAL_LIST));
-        mAdapter = new CommonAdapter(mContext, R.layout.item_messages, mList) {
+        rlMessagesList.setLayoutManager(new LinearLayoutManager(getContext()));
+        rlMessagesList.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL_LIST));
+        mAdapter = new CommonAdapter(getContext(), R.layout.item_messages, mList) {
             @Override
             protected void convert(ViewHolder holder, Object o, int position) {
                 if (mList.get(position).isRead) {

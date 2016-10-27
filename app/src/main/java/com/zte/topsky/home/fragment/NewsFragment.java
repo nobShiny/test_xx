@@ -63,9 +63,9 @@ public class NewsFragment extends BaseFragment {
 
     private void initView(View layout) {
         mList = textData();
-        rlNewsList.setLayoutManager(new LinearLayoutManager(mContext));
-        rlNewsList.addItemDecoration(new DividerItemDecoration(mContext, DividerItemDecoration.VERTICAL_LIST));
-        mAdapter = new CommonAdapter(mContext, R.layout.item_news, mList) {
+        rlNewsList.setLayoutManager(new LinearLayoutManager(getContext()));
+        rlNewsList.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL_LIST));
+        mAdapter = new CommonAdapter(getContext(), R.layout.item_news, mList) {
             @Override
             protected void convert(ViewHolder holder, Object o, int position) {
                 holder.setText(R.id.tv_news_title, mList.get(position).getTitle());

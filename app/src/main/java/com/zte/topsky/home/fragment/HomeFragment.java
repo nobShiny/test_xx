@@ -107,18 +107,16 @@ public class HomeFragment extends BaseFragment {
     }
 
     private void initFunctionArea(View layout) {
-        grid.setAdapter(mAdapter = new CommonAdapter<GridCutItem>(mContext, mDatas, R.layout.item_home_grid) {
+        mAdapter = new CommonAdapter<GridCutItem>(getContext(), mDatas, R.layout.item_home_grid) {
             @Override
             public void convert(ViewHolder helper, final GridCutItem item, int position) {
                 helper.setText(R.id.tv_item, item.getName());
                 helper.setImageResource(R.id.iv_item_icon, iconId[position]);
                 viewWithSign = helper.getView(R.id.icon);
                 viewWithSign.addDrawText(item.getTip());
-//                if (position == mAdapter.getCount() - 1) {
-//                    helper.setImageResource(R.id.iv_item, R.drawable.add_more);
-//                }
             }
-        });
+        };
+        grid.setAdapter(mAdapter);
 
         //设置拖拽数据交换
         /*grid.setOnChangeListener(new DragGridView.OnChangeListener() {
