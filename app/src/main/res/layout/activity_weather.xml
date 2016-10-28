@@ -41,7 +41,14 @@
         android:text="按日期选择查看"/>
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/rl_chart_line"
+        android:id="@+id/rl_chart_soil_line"
+        android:layout_width="match_parent"
+        android:layout_margin="8dp"
+        android:layout_height="0dp"
+        android:layout_weight="0.6"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rl_chart_relative_line"
         android:layout_width="match_parent"
         android:layout_margin="8dp"
         android:layout_height="0dp"

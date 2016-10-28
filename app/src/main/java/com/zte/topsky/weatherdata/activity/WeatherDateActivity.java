@@ -32,8 +32,10 @@ public class WeatherDateActivity extends BaseActivity {
     TextView tvTitleText;
     @BindView(R.id.btn_date)
     Button btnDate;
-    @BindView(R.id.rl_chart_line)
-    RecyclerView rlChartLine;
+    @BindView(R.id.rl_chart_soil_line)
+    RecyclerView rlChartSoilLine;
+    @BindView(R.id.rl_chart_relative_line)
+    RecyclerView rlChartRelativeLine;
     private DatePicker picker;
 
     private String[] str;
@@ -58,6 +60,7 @@ public class WeatherDateActivity extends BaseActivity {
 
     @BindView(R.id.chart)
     SoilLineChartView chart;
+
     private void initView() {
         tvTitleText.setText("数据");
         DPTManager.getInstance().initCalendar(new DataPickerBG());
@@ -96,8 +99,8 @@ public class WeatherDateActivity extends BaseActivity {
             @Override
             public void onDatePicked(String date) {
                 str = date.split("-");
-                picker.setDate(Integer.valueOf(str[0]),Integer.valueOf(str[1]));
-                btnDate.setText(str[0]+"年"+str[1]+"月"+str[2]+"日");
+                picker.setDate(Integer.valueOf(str[0]), Integer.valueOf(str[1]));
+                btnDate.setText(str[0] + "年" + str[1] + "月" + str[2] + "日");
                 dialog.dismiss();
             }
         });

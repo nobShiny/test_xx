@@ -6,7 +6,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.zte.topsky.R;
@@ -37,6 +39,14 @@ public class PayFragment extends BaseFragment {
     CheckBox rbCheckYl;
     @BindView(R.id.confirm_pay)
     Button confirmPay;
+    @BindView(R.id.ll_alipay)
+    LinearLayout llAlipay;
+    @BindView(R.id.ll_wechat)
+    LinearLayout llWechat;
+    @BindView(R.id.ll_yl)
+    LinearLayout llYl;
+    @BindView(R.id.et_amount)
+    EditText etAmount;
 
     private PaymentWay pay;
 
@@ -111,7 +121,7 @@ public class PayFragment extends BaseFragment {
     }
 
 
-    @OnClick({R.id.iv_back, R.id.confirm_pay})
+    @OnClick({R.id.iv_back, R.id.confirm_pay, R.id.ll_alipay, R.id.ll_wechat, R.id.ll_yl})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.iv_back:
@@ -120,8 +130,30 @@ public class PayFragment extends BaseFragment {
             case R.id.confirm_pay:
                 if (!pay.isCheck()) {
                     Toast.makeText(mContext, "请选择一种付款方式", Toast.LENGTH_SHORT).show();
-                }else{
-                    Toast.makeText(mContext, "选择了:"+pay.getName(), Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(mContext, "选择了" + pay.getName() +"支付，金额为："+
+                            etAmount.getText().toString()+"元", Toast.LENGTH_SHORT).show();
+                }
+                break;
+            case R.id.ll_alipay:
+                if (rbCheckAlipay.isChecked()) {
+                    rbCheckAlipay.setChecked(false);
+                } else {
+                    rbCheckAlipay.setChecked(true);
+                }
+                break;
+            case R.id.ll_wechat:
+                if (rbCheckWx.isChecked()) {
+                    rbCheckWx.setChecked(false);
+                } else {
+                    rbCheckWx.setChecked(true);
+                }
+                break;
+            case R.id.ll_yl:
+                if (rbCheckYl.isChecked()) {
+                    rbCheckYl.setChecked(false);
+                } else {
+                    rbCheckYl.setChecked(true);
                 }
                 break;
         }

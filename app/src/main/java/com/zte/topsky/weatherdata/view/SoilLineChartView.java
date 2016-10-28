@@ -96,7 +96,7 @@ public class SoilLineChartView extends BaseChartView implements Runnable{
 
             chart.getDataAxis().setAxisMin(30);
             //数据轴最大值
-            chart.getDataAxis().setAxisMax(60);
+            chart.getDataAxis().setAxisMax(100);
             //数据轴刻度间隔
             chart.getDataAxis().setAxisSteps(1);
             //指隔多少个轴刻度(即细刻度)后为主刻度
@@ -106,7 +106,7 @@ public class SoilLineChartView extends BaseChartView implements Runnable{
             chart.getPlotGrid().showHorizontalLines();
 
             //标题
-            chart.setTitle("土壤情况一览");
+            chart.setTitle("土壤、空气湿度情况一览");
             yearly = new StringBuilder("(").append(mYear).append(")");
             chart.addSubtitle(yearly.toString());
 
@@ -363,16 +363,17 @@ public class SoilLineChartView extends BaseChartView implements Runnable{
         mYear = year;
         mData = data;
         mData = new LinkedHashMap();
-        mData.put("1时",40d);
-        mData.put("2时",38d);
-        mData.put("3时",37d);
-        mData.put("4时",36d);
-        mData.put("5时",35d);
-        mData.put("6时",35d);
-        mData.put("7时",36d);
-        mData.put("8时",40d);
-        mData.put("9时",44d);
-        mData.put("10时",50d);
+        mData.put("8时",43d);
+        mData.put("9时",47d);
+        mData.put("10时",52d);
+        mData.put("11时",53d);
+        mData.put("12时",55d);
+        mData.put("13时",64d);
+        mData.put("14时",77d);
+        mData.put("15时",79d);
+        mData.put("16时",82d);
+        mData.put("17时",83d);
+        mData.put("18时",82d);
         return mData;
     }
 

@@ -1,7 +1,6 @@
 package com.zte.topsky.monitor.activity;
 
 import android.os.Bundle;
-import android.view.SurfaceView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -12,6 +11,8 @@ import com.zte.topsky.base.activity.BaseActivity;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import fm.jiecao.jcvideoplayer_lib.JCVideoPlayer;
+import fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard;
 
 /**
  * Created by NobShiny
@@ -21,7 +22,7 @@ import butterknife.OnClick;
 public class MonitorActivity extends BaseActivity {
 
     @BindView(R.id.sv_view_content)
-    SurfaceView svViewContent;
+    JCVideoPlayerStandard svViewContent;
     @BindView(R.id.btn_control_up)
     Button btnControlUp;
     @BindView(R.id.btn_control_enter)
@@ -34,6 +35,7 @@ public class MonitorActivity extends BaseActivity {
     Button btnControlDown;
     @BindView(R.id.tv_title_text)
     TextView tvTitleText;
+    String videoUrl;
 
 
     @Override
@@ -43,6 +45,10 @@ public class MonitorActivity extends BaseActivity {
         if (savedInstanceState == null) {
             tvTitleText.setText("监控");
         }
+        videoUrl = "http://123.6.0.82/youku/6575D9DC83B447335B4186A83/03000801004D86B1D7F1A701ED892DE6F39CFE-EA7F-C587-B677-D6A8EE9CCF37.mp4?special=true";
+//        svViewContent.setAllControlsVisible(View.GONE,View.GONE,View.GONE,View.GONE,View.GONE,View.GONE,View.GONE,View.GONE);
+        svViewContent.setUp(videoUrl,JCVideoPlayerStandard.SCREEN_LAYOUT_LIST,"");
+        svViewContent.prepareVideo();
     }
 
     @OnClick({R.id.btn_control_up, R.id.btn_control_enter, R.id.btn_control_left, R.id.btn_control_right, R.id.btn_control_down})
@@ -64,5 +70,18 @@ public class MonitorActivity extends BaseActivity {
                 Toast.makeText(this, "摄像头下移", Toast.LENGTH_SHORT).show();
                 break;
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (JCVideoPlayer.backPress()) {
+            return;
+        }
+        super.onBackPressed();
+    }
+    @Override
+    protected void onPause() {
+        super.onPause();
+        JCVideoPlayer.releaseAllVideos();
     }
 }

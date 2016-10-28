@@ -39,4 +39,6 @@ dependencies {
     compile "net.qiujuer.genius:res:2.0.0-beta2"
     compile 'cn.aigestudio.datepicker:DatePicker:2.2.0'
 
+    compile 'fm.jiecao:jiecaovideoplayer:4.8.1'
+
 }
