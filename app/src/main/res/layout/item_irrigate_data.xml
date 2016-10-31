@@ -6,7 +6,7 @@
     android:orientation="horizontal">
 
     <TextView
-        android:id="@+id/tv_data_time"
+        android:id="@+id/tv_data_name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
@@ -15,10 +15,40 @@
         android:textSize="14sp"
         android:paddingRight="10dp"
         android:background="@drawable/bg_irrigate_date_text"
-        tools:text="2016年1月2日" />
+        tools:text="20" />
 
     <TextView
-        android:id="@+id/tv_data"
+        android:id="@+id/tv_count"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:layout_weight="1"
+        android:textColor="@color/listTextColor"
+        android:background="@drawable/bg_irrigate_date_text"
+        android:textSize="14sp"
+        tools:text="23" />
+    <TextView
+        android:id="@+id/tv_cumulation"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:layout_weight="1"
+        android:textColor="@color/listTextColor"
+        android:background="@drawable/bg_irrigate_date_text"
+        android:textSize="14sp"
+        tools:text="263m3" />
+    <TextView
+        android:id="@+id/tv_last"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:layout_weight="1"
+        android:textColor="@color/listTextColor"
+        android:background="@drawable/bg_irrigate_date_text"
+        android:textSize="14sp"
+        tools:text="263m3" />
+    <TextView
+        android:id="@+id/tv_sum"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:gravity="center"

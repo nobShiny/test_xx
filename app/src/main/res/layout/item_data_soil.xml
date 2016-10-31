@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="120dp"
+    android:background="@color/white"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:id="@+id/ll_index"
+        android:layout_width="100dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/table_item_view_style"
+            android:text="时间" />
+
+        <TextView
+            style="@style/table_item_view_style"
+            android:text="土壤湿度" />
+
+        <TextView
+            style="@style/table_item_view_style"
+            android:text="相对湿度" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="80dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/item_time"
+            style="@style/table_item_view_style"
+            android:textColor="@color/listTextColor"
+            tools:text="0点" />
+
+        <TextView
+            android:id="@+id/item_soil"
+            style="@style/table_item_view_style"
+            android:textColor="#EA5347"
+            tools:text="55" />
+
+        <TextView
+            android:id="@+id/item_relative"
+            style="@style/table_item_view_style"
+            android:textColor="#4BA633"
+            tools:text="16" />
+    </LinearLayout>
+
+</LinearLayout>

@@ -41,7 +41,7 @@
                 android:focusable="true"
                 android:focusableInTouchMode="true"
                 android:gravity="center_vertical"
-                android:maxLines="1"
+                android:singleLine="true"
                 android:text="灌溉预警信息：根据土壤湿度检测，您的土地土壤水分已经不足30%，请尽快进行灌溉。"
                 android:textColor="@color/signColor"
                 android:textSize="16sp" />

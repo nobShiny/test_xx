@@ -4,6 +4,7 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     android:background="@color/theme_color"
+    android:weightSum="2"
     android:orientation="vertical">
 
     <include layout="@layout/layout_back"/>
@@ -12,7 +13,7 @@
         android:id="@+id/chart"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_weight="1.25"
         android:paddingTop="10dp"
         android:background="@color/white"
         />
@@ -45,14 +46,6 @@
         android:layout_width="match_parent"
         android:layout_margin="8dp"
         android:layout_height="0dp"
-        android:layout_weight="0.6"/>
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rl_chart_relative_line"
-        android:layout_width="match_parent"
-        android:layout_margin="8dp"
-        android:layout_height="0dp"
-        android:layout_weight="0.6"/>
-
+        android:layout_weight="0.5"/>
 
 </LinearLayout>

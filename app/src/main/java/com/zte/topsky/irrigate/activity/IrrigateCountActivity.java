@@ -15,6 +15,7 @@ import com.zte.topsky.base.activity.BaseActivity;
 import com.zte.topsky.common.utils.DividerItemDecoration;
 import com.zte.topsky.common.utils.OnClickEvent;
 import com.zte.topsky.irrigate.bean.IrrigateData;
+import com.zte.topsky.irrigate.customui.IrrigateColumnDiagramView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,6 +35,8 @@ public class IrrigateCountActivity extends BaseActivity {
     LinearLayout llNotice;
     @BindView(R.id.tv_title_text)
     TextView tvTitleText;
+    @BindView(R.id.ir_chart)
+    IrrigateColumnDiagramView irChart;
 
     private CommonAdapter<String> mAdapter;
     private List<IrrigateData> mList;
@@ -55,8 +58,11 @@ public class IrrigateCountActivity extends BaseActivity {
         mAdapter = new CommonAdapter(this, R.layout.item_irrigate_data, mList) {
             @Override
             protected void convert(ViewHolder holder, Object o, int position) {
-                holder.setText(R.id.tv_data_time, mList.get(position).getIrrigateDateTime());
-                holder.setText(R.id.tv_data, mList.get(position).getIrrigationVolume());
+                holder.setText(R.id.tv_data_name, mList.get(position).getIrrigateDataName());
+                holder.setText(R.id.tv_count, String.valueOf(mList.get(position).getIrrigateDataCount()));
+                holder.setText(R.id.tv_cumulation, String.valueOf(mList.get(position).getIrrigateDataCumulation()));
+                holder.setText(R.id.tv_last, String.valueOf(mList.get(position).getIrrigateDataLast()));
+                holder.setText(R.id.tv_sum, String.valueOf(mList.get(position).getIrrigationSum()));
             }
         };
         rlIrrigateList.setAdapter(mAdapter);
@@ -84,29 +90,10 @@ public class IrrigateCountActivity extends BaseActivity {
 
     private List<IrrigateData> textData() {
         mList = new ArrayList<>();
-        IrrigateData data1 = new IrrigateData("2016年1月16日15时-2016年2月16日15时", "100m³");
-
-        IrrigateData data2 = new IrrigateData("2016年2月16日15时-2016年3月16日15时", "100m³");
-
-        IrrigateData data3 = new IrrigateData("2016年3月16日15时-2016年4月16日15时", "100m³");
-
-        IrrigateData data4 = new IrrigateData("2016年4月16日15时-2016年5月16日15时", "100m³");
-
-        IrrigateData data5 = new IrrigateData("2016年5月16日15时-2016年6月16日15时", "100m³");
-
-        IrrigateData data6 = new IrrigateData("2016年6月16日15时-2016年7月16日15时", "100m³");
-
-        IrrigateData data7 = new IrrigateData("2016年7月16日15时-2016年8月16日15时", "100m³");
-
-        IrrigateData data8 = new IrrigateData("2016年8月16日15时-2016年9月16日15时", "100m³");
-        mList.add(data8);
-        mList.add(data7);
-        mList.add(data6);
-        mList.add(data5);
-        mList.add(data4);
-        mList.add(data3);
-        mList.add(data2);
+        IrrigateData data1 = new IrrigateData("1号机井", 8,228,272,500);
+        IrrigateData data2 = new IrrigateData("2号机井", 6,126,347,500);
         mList.add(data1);
+        mList.add(data2);
 
         return mList;
 

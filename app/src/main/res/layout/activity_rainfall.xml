@@ -1,23 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     android:orientation="vertical">
 
-    <include layout="@layout/layout_back"/>
+    <include layout="@layout/layout_back" />
 
-    <TextView
+    <!--<TextView
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:gravity="center"
         android:padding="10dp"
-        android:text="降雨量折线统计图"/>
+        android:text="降雨量折线统计图"/>-->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <android.support.v4.widget.ContentLoadingProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="gone" />
+
+        <com.zte.topsky.chartdata.view.WeatherWebView
+            android:id="@+id/wv_weather"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </FrameLayout>
 
     <com.zte.topsky.chartdata.view.RainFallView
         android:id="@+id/rainfall_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        />
+        android:layout_height="0dp"
+        android:layout_weight="1" />
 
 </LinearLayout>

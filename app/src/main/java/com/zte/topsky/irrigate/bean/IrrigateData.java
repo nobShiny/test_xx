@@ -7,27 +7,57 @@ package com.zte.topsky.irrigate.bean;
 
 public class IrrigateData {
 
-    public String IrrigateDateTime;
-    public String IrrigationVolume;
+    public String IrrigateDataName;
+    public int IrrigateDataCount;
+    public int IrrigateDataLast;
+    public int IrrigateDataCumulation;
+    public int IrrigationSum;
 
-    public IrrigateData(String irrigateDateTime, String irrigationVolume) {
-        IrrigateDateTime = irrigateDateTime;
-        IrrigationVolume = irrigationVolume;
+    public IrrigateData(String irrigateDataName, int irrigateDataCount, int irrigateDataLast, int irrigateDataCumulation, int irrigationSum) {
+        IrrigateDataName = irrigateDataName;
+        IrrigateDataCount = irrigateDataCount;
+        IrrigateDataLast = irrigateDataLast;
+        IrrigateDataCumulation = irrigateDataCumulation;
+        IrrigationSum = irrigationSum;
     }
 
-    public String getIrrigateDateTime() {
-        return IrrigateDateTime;
+    public String getIrrigateDataName() {
+        return IrrigateDataName;
     }
 
-    public void setIrrigateDateTime(String irrigateDateTime) {
-        IrrigateDateTime = irrigateDateTime;
+    public void setIrrigateDataName(String irrigateDataName) {
+        IrrigateDataName = irrigateDataName;
     }
 
-    public String getIrrigationVolume() {
-        return IrrigationVolume;
+    public int getIrrigateDataCount() {
+        return IrrigateDataCount;
     }
 
-    public void setIrrigationVolume(String irrigationVolume) {
-        IrrigationVolume = irrigationVolume;
+    public void setIrrigateDataCount(int irrigateDataCount) {
+        IrrigateDataCount = irrigateDataCount;
+    }
+
+    public int getIrrigateDataLast() {
+        return IrrigateDataLast;
+    }
+
+    public void setIrrigateDataLast(int irrigateDataLast) {
+        IrrigateDataLast = irrigateDataLast;
+    }
+
+    public int getIrrigateDataCumulation() {
+        return IrrigateDataCumulation;
+    }
+
+    public void setIrrigateDataCumulation(int irrigateDataCumulation) {
+        IrrigateDataCumulation = irrigateDataCumulation;
+    }
+
+    public int getIrrigationSum() {
+        return IrrigationSum;
+    }
+
+    public void setIrrigationSum(int irrigationSum) {
+        IrrigationSum = irrigationSum;
     }
 }

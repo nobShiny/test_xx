@@ -4,46 +4,86 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true">
 
-    <include layout="@layout/layout_back"/>
+    <include layout="@layout/layout_back" />
 
-    <include layout="@layout/layout_notice"/>
+    <include layout="@layout/layout_notice" />
 
     <LinearLayout
-        android:id="@+id/ll_header"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:paddingLeft="8dp"
-        android:paddingRight="8dp"
-        android:layout_marginTop="100dp"
-        android:paddingTop="2dp">
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/bg_irrigate_date_text"
-            android:gravity="center"
-            android:text="起止时间"
-            android:textSize="16sp" />
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/bg_irrigate_date_text"
-            android:gravity="center"
-            android:text="灌溉水量"
-            android:textSize="16sp" />
-
-    </LinearLayout>
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rl_irrigate_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/ll_header"
-        android:background="@color/white"
-        android:paddingLeft="8dp"
-        android:paddingRight="8dp" />
+        android:orientation="vertical">
 
+        <com.zte.topsky.irrigate.customui.IrrigateColumnDiagramView
+            android:id="@+id/ir_chart"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginTop="100dp" />
+
+        <LinearLayout
+            android:id="@+id/ll_header"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:paddingTop="2dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/bg_irrigate_date_text"
+                android:gravity="center"
+                android:text="机井序号"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/bg_irrigate_date_text"
+                android:gravity="center"
+                android:text="灌溉次数"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/bg_irrigate_date_text"
+                android:gravity="center"
+                android:text="累计用水"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/bg_irrigate_date_text"
+                android:gravity="center"
+                android:text="剩余水量"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/bg_irrigate_date_text"
+                android:gravity="center"
+                android:text="总配额"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rl_irrigate_list"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.5"
+            android:layout_below="@id/ll_header"
+            android:background="@color/white"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp" />
+    </LinearLayout>
 </RelativeLayout>

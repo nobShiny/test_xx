@@ -60,11 +60,6 @@ public class PayRecordFragment extends BaseFragment {
                 holder.setText(R.id.tv_pay_record_date, mList.get(position).getDate());
                 holder.setText(R.id.tv_pay_record_amount, mList.get(position).getAmount());
             }
-
-            @Override
-            public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-
-            }
         };
         mAdapter.setOnItemClickListener(new MultiItemTypeAdapter.OnItemClickListener() {
             @Override
