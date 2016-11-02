@@ -8,15 +8,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.zte.topsky.R;
 import com.zte.topsky.base.fragment.BaseFragment;
 import com.zte.topsky.bind.activity.BindMonitorActivity;
 import com.zte.topsky.bind.activity.BindShaftActivity;
 import com.zte.topsky.common.utils.OnClickEvent;
-import com.zte.topsky.login.activity.LoginActivity;
 import com.zte.topsky.mine.SettingsActivity;
-import com.zte.topsky.register.activity.RegisterActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -106,12 +105,13 @@ public class MineFragment extends BaseFragment {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.tv_login:
-                Intent intentLogin = new Intent(mContext,LoginActivity.class);
-                startActivity(intentLogin);
+//                Intent intentLogin = new Intent(mContext,LoginActivity.class);
+//                startActivity(intentLogin);
+                Toast.makeText(mContext, "功能待开发", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.tv_register:
-                Intent intentRegister = new Intent(mContext,RegisterActivity.class);
-                startActivity(intentRegister);
+//                Intent intentRegister = new Intent(mContext,RegisterActivity.class);
+//                startActivity(intentRegister);
                 break;
             case R.id.ll_monitor_bind:
                 Intent intentBindM = new Intent(mContext,BindMonitorActivity.class);

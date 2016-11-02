@@ -40,4 +40,9 @@ public class AppUtils {
         return new StringBuilder().append(prefix).append("<a href=\"").append(url).append("\">").append(content)
                 .append("</a>").toString();
     }
+
+    public static int Dp2Px(Context context, float dp) {
+        final float scale = context.getResources().getDisplayMetrics().density;
+        return (int) (dp * scale + 0.5f);
+    }
 }

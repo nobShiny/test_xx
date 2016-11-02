@@ -7,6 +7,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.zte.topsky.R;
 import com.zte.topsky.base.activity.BaseActivity;
@@ -22,9 +23,10 @@ import java.util.List;
 
 import butterknife.BindView;
 
-public class MainActivity extends BaseActivity /*implements NewsFragment.DataListener*/{
+public class MainActivity extends BaseActivity /*implements NewsFragment.DataListener*/ {
 
     private Context mContext;
+    private long mPressedTime = 0;
     private AppFragmentAdapter mAdapter;
 
     private List<Fragment> fragmentList = new ArrayList<>();
@@ -57,7 +59,7 @@ public class MainActivity extends BaseActivity /*implements NewsFragment.DataLis
         fragmentList.add(MessagesFragment.newInstance(mContext));
         fragmentList.add(NewsFragment.newInstance(mContext));
         fragmentList.add(MineFragment.newInstance(mContext));
-        mAdapter = new AppFragmentAdapter(mContext,getSupportFragmentManager(),fragmentList);
+        mAdapter = new AppFragmentAdapter(mContext, getSupportFragmentManager(), fragmentList);
         mPager.setAdapter(mAdapter);
 //        mTabLayout = (MainBottomTabLayout) findViewById(R.id.main_bottom_tablayout);
         mTabLayout.setViewPager(mPager);
@@ -74,6 +76,7 @@ public class MainActivity extends BaseActivity /*implements NewsFragment.DataLis
         int id = item.getItemId();
 
         if (id == R.id.action_settings) {
+            AppExit(this);
             return true;
         }
 
@@ -92,4 +95,16 @@ public class MainActivity extends BaseActivity /*implements NewsFragment.DataLis
         super.onResume();
     }
 
+
+    @Override
+    public void onBackPressed() {
+        long mNowTime = System.currentTimeMillis();//获取第一次按键时间
+        if ((mNowTime - mPressedTime) > 2000) {//比较两次按键时间差
+            Toast.makeText(this, "再次点击退出程序", Toast.LENGTH_SHORT).show();
+            mPressedTime = mNowTime;
+        } else {//退出程序
+            this.finish();
+            System.exit(0);
+        }
+    }
 }

@@ -8,8 +8,11 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.AdapterView;
+import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.youth.banner.Banner;
@@ -18,12 +21,11 @@ import com.youth.banner.loader.ImageLoader;
 import com.zte.topsky.R;
 import com.zte.topsky.base.fragment.BaseFragment;
 import com.zte.topsky.chartdata.activity.RainFallDataActivity;
-import com.zte.topsky.home.adapter.CommonAdapter;
-import com.zte.topsky.home.adapter.ViewHolder;
 import com.zte.topsky.home.bean.GridCutItem;
 import com.zte.topsky.home.customui.homeScrollView.ControlScrollView;
 import com.zte.topsky.home.customui.homeScrollView.DragGridView;
 import com.zte.topsky.home.customui.homeScrollView.ViewWithSign;
+import com.zte.topsky.home.utils.AppUtils;
 import com.zte.topsky.irrigate.activity.IrrigateCountActivity;
 import com.zte.topsky.monitor.activity.MonitorActivity;
 import com.zte.topsky.pay.activity.PayActivity;
@@ -66,7 +68,7 @@ public class HomeFragment extends BaseFragment {
             R.drawable.ic_home_item_pay};
 
     private ArrayList<GridCutItem> mDatas = new ArrayList<>();
-    private CommonAdapter mAdapter;
+    private HomeGirdViewAdapter mAdapter;
 
 
     public static HomeFragment newInstance(Context context) {
@@ -107,15 +109,15 @@ public class HomeFragment extends BaseFragment {
     }
 
     private void initFunctionArea(View layout) {
-        mAdapter = new CommonAdapter<GridCutItem>(getContext(), mDatas, R.layout.item_home_grid) {
-            @Override
-            public void convert(ViewHolder helper, final GridCutItem item, int position) {
-                helper.setText(R.id.tv_item, item.getName());
-                helper.setImageResource(R.id.iv_item_icon, iconId[position]);
-                viewWithSign = helper.getView(R.id.icon);
-                viewWithSign.addDrawText(item.getTip());
-            }
-        };
+//        mAdapter = new CommonAdapter<GridCutItem>(getContext(), mDatas, R.layout.item_home_grid,grid) {
+//            @Override
+//            public void convert(ViewHolder helper, final GridCutItem item, int position) {
+//
+////                viewWithSign = helper.getView(R.id.icon);
+////                viewWithSign.addDrawText(item.getTip());
+//            }
+////        };
+        mAdapter = new HomeGirdViewAdapter(mContext,mDatas,grid);
         grid.setAdapter(mAdapter);
 
         //设置拖拽数据交换
@@ -136,7 +138,7 @@ public class HomeFragment extends BaseFragment {
                 mAdapter.notifyDataSetChanged();
             }
         });*/
-        mAdapter.notifyDataSetChanged();
+//        mAdapter.notifyDataSetChanged();
         scroller.setScrollState(new ControlScrollView.ScrollState() {
             @Override
             public void stopTouch() {
@@ -253,6 +255,64 @@ public class HomeFragment extends BaseFragment {
         @Override
         public void displayImage(Context context, Object path, ImageView imageView) {
             Glide.with(context).load(path).into(imageView);
+        }
+    }
+
+    class HomeGirdViewAdapter extends BaseAdapter{
+
+        private DragGridView grid;
+        private LayoutInflater mInflater;
+        private Context mContext;
+        private ArrayList<GridCutItem> mDatas;
+
+        public HomeGirdViewAdapter(Context context, ArrayList<GridCutItem> data,DragGridView grid) {
+            mContext = context;
+            mDatas = data;
+            this.grid = grid;
+            mInflater = LayoutInflater.from(context);
+        }
+
+        @Override
+        public int getCount() {
+            return mDatas.size();
+        }
+
+        @Override
+        public Object getItem(int position) {
+            return mDatas.get(position);
+        }
+
+        @Override
+        public long getItemId(int position) {
+            return 0;
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            AbsListView.LayoutParams param = new AbsListView.LayoutParams(
+                    ViewGroup.LayoutParams.MATCH_PARENT,
+                    (grid.getHeight()-(AppUtils.Dp2Px(mContext,4)))/2);
+            ViewHolder viewHolder = null;
+            if (convertView == null) {
+                convertView = mInflater.inflate(R.layout.item_home_grid, null, false);
+
+                viewHolder = new ViewHolder();
+                viewHolder.mImageView = (ImageView) convertView.findViewById(R.id.iv_item_icon);
+                viewHolder.mTextView = (TextView) convertView.findViewById(R.id.tv_item);
+                convertView.setTag(viewHolder);
+            } else {
+                viewHolder = (ViewHolder) convertView.getTag();
+            }
+
+            viewHolder.mImageView.setImageResource(iconId[position]);
+            viewHolder.mTextView.setText(mDatas.get(position).getName());
+            convertView.setLayoutParams(param);
+            return convertView;
+        }
+
+        class ViewHolder {
+            ImageView mImageView;
+            TextView mTextView;
         }
     }
 }

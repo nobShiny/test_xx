@@ -26,52 +26,52 @@
         </activity>
 
         <activity android:name=".chartdata.activity.RainFallDataActivity"
-            android:configChanges="orientation|keyboard|keyboardHidden"
+            android:configChanges="orientation|screenSize|keyboardHidden"
             android:screenOrientation="portrait"
             />
         <activity android:name=".weatherdata.activity.WeatherDateActivity"
-            android:configChanges="orientation|keyboard|keyboardHidden"
+            android:configChanges="orientation|screenSize|keyboardHidden"
             android:screenOrientation="portrait"
             />
         <activity android:name=".mine.SettingsActivity"
-            android:configChanges="orientation|keyboard|keyboardHidden"
+            android:configChanges="orientation|screenSize|keyboardHidden"
             android:screenOrientation="portrait"
             />
         <activity android:name=".sluicecontrol.activity.SluiceControlActivity"
-            android:configChanges="orientation|keyboard|keyboardHidden"
+            android:configChanges="orientation|screenSize|keyboardHidden"
             android:screenOrientation="portrait"
             />
         <activity android:name=".monitor.activity.MonitorActivity"
-            android:configChanges="orientation|keyboard|keyboardHidden"
+            android:configChanges="orientation|screenSize|keyboardHidden"
             android:screenOrientation="portrait"
             />
         <activity android:name=".news.activity.NewActivity"
-            android:configChanges="orientation|keyboard|keyboardHidden"
+            android:configChanges="orientation|screenSize|keyboardHidden"
             android:screenOrientation="portrait"
             />
         <activity android:name=".pay.activity.PayActivity"
-            android:configChanges="orientation|keyboard|keyboardHidden"
+            android:configChanges="orientation|screenSize|keyboardHidden"
             android:screenOrientation="portrait"
             />
         <activity android:name=".irrigate.activity.IrrigateCountActivity"
-            android:configChanges="orientation|keyboard|keyboardHidden"
+            android:configChanges="orientation|screenSize|keyboardHidden"
             android:screenOrientation="portrait"
             />
 
         <activity android:name=".bind.activity.BindMonitorActivity"
-            android:configChanges="orientation|keyboard|keyboardHidden"
+            android:configChanges="orientation|screenSize|keyboardHidden"
             android:screenOrientation="portrait"
             />
         <activity android:name=".bind.activity.BindShaftActivity"
-            android:configChanges="orientation|keyboard|keyboardHidden"
+            android:configChanges="orientation|screenSize|keyboardHidden"
             android:screenOrientation="portrait"
             />
         <activity android:name=".login.activity.LoginActivity"
-            android:configChanges="orientation|keyboard|keyboardHidden"
+            android:configChanges="orientation|screenSize|keyboardHidden"
             android:screenOrientation="portrait"
             />
         <activity android:name=".register.activity.RegisterActivity"
-            android:configChanges="orientation|keyboard|keyboardHidden"
+            android:configChanges="orientation|screenSize|keyboardHidden"
             android:screenOrientation="portrait"
             />
     </application>

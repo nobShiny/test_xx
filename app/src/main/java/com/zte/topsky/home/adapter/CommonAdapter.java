@@ -1,6 +1,7 @@
 package com.zte.topsky.home.adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -70,10 +71,12 @@ public  abstract class  CommonAdapter<T> extends BaseAdapter {
     @Override
     public int getItemViewType(int position) {
         if (null == mDatas || position < 0 || position > getCount()) {
+            Log.d("CommonAdapter", "空TYPE_ITEM");
             return TYPE_ITEM;
         }
 
         if (mCallBack != null && mCallBack.isSection(position)) {
+            Log.d("CommonAdapter", "TYPE_SECTION_ITEM");
             return TYPE_SECTION_ITEM;
         }
         return TYPE_ITEM;
@@ -89,7 +92,6 @@ public  abstract class  CommonAdapter<T> extends BaseAdapter {
                 //从ViewHolder中获取控件view，若为空则创建
                 final ViewHolder viewHolder = getViewHolder(position, convertView, parent);
                 convert(viewHolder, getItem(position), position);
-
                 return viewHolder.getConvertView();
 
             case TYPE_SECTION_ITEM:

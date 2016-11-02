@@ -135,27 +135,27 @@ public class PayFragment extends BaseFragment {
                             etAmount.getText().toString()+"元", Toast.LENGTH_SHORT).show();
                 }
                 break;
-            case R.id.ll_alipay:
-                if (rbCheckAlipay.isChecked()) {
-                    rbCheckAlipay.setChecked(false);
-                } else {
-                    rbCheckAlipay.setChecked(true);
-                }
-                break;
-            case R.id.ll_wechat:
-                if (rbCheckWx.isChecked()) {
-                    rbCheckWx.setChecked(false);
-                } else {
-                    rbCheckWx.setChecked(true);
-                }
-                break;
-            case R.id.ll_yl:
-                if (rbCheckYl.isChecked()) {
-                    rbCheckYl.setChecked(false);
-                } else {
-                    rbCheckYl.setChecked(true);
-                }
-                break;
+//            case R.id.ll_alipay:
+//                if (rbCheckAlipay.isChecked()) {
+//                    rbCheckAlipay.setChecked(false);
+//                } else {
+//                    rbCheckAlipay.setChecked(true);
+//                }
+//                break;
+//            case R.id.ll_wechat:
+//                if (rbCheckWx.isChecked()) {
+//                    rbCheckWx.setChecked(false);
+//                } else {
+//                    rbCheckWx.setChecked(true);
+//                }
+//                break;
+//            case R.id.ll_yl:
+//                if (rbCheckYl.isChecked()) {
+//                    rbCheckYl.setChecked(false);
+//                } else {
+//                    rbCheckYl.setChecked(true);
+//                }
+//                break;
         }
     }
 }

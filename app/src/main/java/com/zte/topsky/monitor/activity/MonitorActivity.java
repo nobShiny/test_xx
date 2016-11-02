@@ -1,5 +1,7 @@
 package com.zte.topsky.monitor.activity;
 
+import android.hardware.Sensor;
+import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -37,6 +39,9 @@ public class MonitorActivity extends BaseActivity {
     TextView tvTitleText;
     String videoUrl;
 
+    private JCVideoPlayer.JCAutoFullscreenListener mSensorEventListener;
+    private SensorManager mSensorManager;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,10 +50,17 @@ public class MonitorActivity extends BaseActivity {
         if (savedInstanceState == null) {
             tvTitleText.setText("监控");
         }
-        videoUrl = "http://123.6.0.82/youku/6575D9DC83B447335B4186A83/03000801004D86B1D7F1A701ED892DE6F39CFE-EA7F-C587-B677-D6A8EE9CCF37.mp4?special=true";
-//        svViewContent.setAllControlsVisible(View.GONE,View.GONE,View.GONE,View.GONE,View.GONE,View.GONE,View.GONE,View.GONE);
-        svViewContent.setUp(videoUrl,JCVideoPlayerStandard.SCREEN_LAYOUT_LIST,"");
+
+        videoUrl = "http://121.29.55.49/youku/6979DD10DDB4979FA97006DBD/03000801004EEABAEC9CEF0017BD61BD8A187B-3461-8D31-947B-32C563039C6A.mp4";
+        svViewContent.setUp(videoUrl,JCVideoPlayerStandard.SCREEN_LAYOUT_NORMAL,"");
+        svViewContent.startWindowFullscreen();
+        initVideoView();
         svViewContent.prepareVideo();
+    }
+
+    private void initVideoView() {
+        mSensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
+        mSensorEventListener = new JCVideoPlayer.JCAutoFullscreenListener();
     }
 
     @OnClick({R.id.btn_control_up, R.id.btn_control_enter, R.id.btn_control_left, R.id.btn_control_right, R.id.btn_control_down})
@@ -82,6 +94,14 @@ public class MonitorActivity extends BaseActivity {
     @Override
     protected void onPause() {
         super.onPause();
+        mSensorManager.unregisterListener(mSensorEventListener);
         JCVideoPlayer.releaseAllVideos();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Sensor accelerometerSensor = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        mSensorManager.registerListener(mSensorEventListener, accelerometerSensor, SensorManager.SENSOR_DELAY_NORMAL);
     }
 }
