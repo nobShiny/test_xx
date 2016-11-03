@@ -475,10 +475,10 @@ public class DragGridView  extends GridView {
         void onDragStart();
     }
 
-    @Override
-    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        int expandSpec = View.MeasureSpec.makeMeasureSpec(
-                Integer.MAX_VALUE >> 2, View.MeasureSpec.AT_MOST);//1.精确模式（MeasureSpec.EXACTLY） 2.最大模式（MeasureSpec.AT_MOST） 3.未指定模式（MeasureSpec.UNSPECIFIED）
-        super.onMeasure(widthMeasureSpec, expandSpec);
-    }
+//    @Override
+//    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+//        int expandSpec = View.MeasureSpec.makeMeasureSpec(
+//                Integer.MAX_VALUE >> 2, MeasureSpec.AT_MOST);//1.精确模式（MeasureSpec.EXACTLY） 2.最大模式（MeasureSpec.AT_MOST） 3.未指定模式（MeasureSpec.UNSPECIFIED）
+//        super.onMeasure(widthMeasureSpec, expandSpec);
+//    }
 }

@@ -291,11 +291,10 @@ public class HomeFragment extends BaseFragment {
         public View getView(int position, View convertView, ViewGroup parent) {
             AbsListView.LayoutParams param = new AbsListView.LayoutParams(
                     ViewGroup.LayoutParams.MATCH_PARENT,
-                    (grid.getHeight()-(AppUtils.Dp2Px(mContext,4)))/2);
+                    (grid.getHeight()-(2*AppUtils.Dp2Px(mContext,4)))/2);
             ViewHolder viewHolder = null;
             if (convertView == null) {
-                convertView = mInflater.inflate(R.layout.item_home_grid, null, false);
-
+                convertView = mInflater.inflate(R.layout.item_home_grid, parent, false);
                 viewHolder = new ViewHolder();
                 viewHolder.mImageView = (ImageView) convertView.findViewById(R.id.iv_item_icon);
                 viewHolder.mTextView = (TextView) convertView.findViewById(R.id.tv_item);

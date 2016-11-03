@@ -52,33 +52,35 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:orientation="horizontal"
             android:layout_gravity="center_vertical"
+            android:background="@color/white"
+            android:orientation="horizontal"
             android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:background="@color/white">
+            android:paddingRight="10dp">
+
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0.5"
-                android:textColor="@color/listTextColor"
                 android:gravity="center"
-                android:textSize="16sp"
-                android:text="充值金额："/>
+                android:text="充值金额："
+                android:textColor="@color/listTextColor"
+                android:textSize="16sp" />
+
             <EditText
                 android:id="@+id/et_amount"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:inputType="number"
-                />
+                android:inputType="number" />
+
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0.3"
                 android:gravity="center"
-                android:textSize="16sp"
-                android:text="元"/>
+                android:text="元"
+                android:textSize="16sp" />
         </LinearLayout>
 
         <TextView
@@ -91,174 +93,184 @@
             android:textColor="#d2d2d2"
             android:textSize="12sp" />
 
-
-        <LinearLayout
-            android:id="@+id/ll_alipay"
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_below="@id/payMethod"
-            android:background="@color/white"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.6"
-                android:src="@drawable/ic_pay_alipay" />
+            android:layout_height="wrap_content">
 
             <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:layout_weight="3"
-                android:orientation="vertical"
-                android:padding="6dp">
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="0dp"
-                    android:layout_marginLeft="8dp"
-                    android:layout_weight="1"
-                    android:text="支付宝支付"
-                    android:textColor="#333333"
-                    android:textSize="14sp" />
+                <LinearLayout
+                    android:id="@+id/ll_alipay"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_below="@id/payMethod"
+                    android:background="@color/white"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="0dp"
-                    android:layout_marginLeft="8dp"
-                    android:layout_weight="1"
-                    android:text="推荐有支付宝帐号的用户使用"
-                    android:textColor="#666"
-                    android:textSize="14sp" />
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.6"
+                        android:src="@drawable/ic_pay_alipay" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_weight="3"
+                        android:orientation="vertical"
+                        android:padding="6dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="0dp"
+                            android:layout_marginLeft="8dp"
+                            android:layout_weight="1"
+                            android:text="支付宝支付"
+                            android:textColor="#333333"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="0dp"
+                            android:layout_marginLeft="8dp"
+                            android:layout_weight="1"
+                            android:text="推荐有支付宝帐号的用户使用"
+                            android:textColor="#666"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+
+                    <CheckBox
+                        android:id="@+id/rb_check_alipay"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="20dp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_wechat"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_below="@id/payMethod"
+                    android:layout_marginTop="8dp"
+                    android:background="@color/white"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.6"
+                        android:src="@drawable/ic_pay_wechat" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_weight="3"
+                        android:orientation="vertical"
+                        android:padding="6dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="0dp"
+                            android:layout_marginLeft="8dp"
+                            android:layout_weight="1"
+                            android:text="微信支付"
+                            android:textColor="#333333"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="0dp"
+                            android:layout_marginLeft="8dp"
+                            android:layout_weight="1"
+                            android:text="推荐安装微信5.0及以上版本的使用"
+                            android:textColor="#666"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+
+                    <CheckBox
+                        android:id="@+id/rb_check_wx"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="20dp"
+                        android:checked="false" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_yl"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_below="@id/payMethod"
+                    android:layout_marginTop="8dp"
+                    android:background="@color/white"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.6"
+                        android:src="@drawable/ic_pay_card" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_weight="3"
+                        android:orientation="vertical"
+                        android:padding="6dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="0dp"
+                            android:layout_marginLeft="8dp"
+                            android:layout_weight="1"
+                            android:text="银行卡支付"
+                            android:textColor="#333333"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="0dp"
+                            android:layout_marginLeft="8dp"
+                            android:layout_weight="1"
+                            android:text="推荐银联用户使用"
+                            android:textColor="#666"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+
+                    <CheckBox
+                        android:id="@+id/rb_check_yl"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="20dp"
+                        android:checked="false" />
+
+                </LinearLayout>
+
+                <net.qiujuer.genius.ui.widget.Button
+                    android:id="@+id/confirm_pay"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/g_button_background"
+                    android:text="去付款"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    app:gTouchColor="@color/deep_orange_a400"
+                    app:gTouchCornerRadius="@dimen/lay_12"
+                    app:gTouchCornerRadiusBL="@dimen/lay_16"
+                    app:gTouchCornerRadiusBR="@dimen/lay_16"
+                    app:gTouchCornerRadiusTL="@dimen/lay_16"
+                    app:gTouchCornerRadiusTR="@dimen/lay_16"
+                    app:gTouchDurationRate="0.7"
+                    app:gTouchEffect="auto" />
             </LinearLayout>
-
-            <CheckBox
-                android:id="@+id/rb_check_alipay"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="20dp" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/ll_wechat"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_below="@id/payMethod"
-            android:layout_marginTop="8dp"
-            android:background="@color/white"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.6"
-                android:src="@drawable/ic_pay_wechat" />
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:layout_weight="3"
-                android:orientation="vertical"
-                android:padding="6dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="0dp"
-                    android:layout_marginLeft="8dp"
-                    android:layout_weight="1"
-                    android:text="微信支付"
-                    android:textColor="#333333"
-                    android:textSize="14sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="0dp"
-                    android:layout_marginLeft="8dp"
-                    android:layout_weight="1"
-                    android:text="推荐安装微信5.0及以上版本的使用"
-                    android:textColor="#666"
-                    android:textSize="14sp" />
-            </LinearLayout>
-
-            <CheckBox
-                android:id="@+id/rb_check_wx"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="20dp"
-                android:checked="false" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/ll_yl"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_below="@id/payMethod"
-            android:layout_marginTop="8dp"
-            android:background="@color/white"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.6"
-                android:src="@drawable/ic_pay_card" />
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:layout_weight="3"
-                android:orientation="vertical"
-                android:padding="6dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="0dp"
-                    android:layout_marginLeft="8dp"
-                    android:layout_weight="1"
-                    android:text="银行卡支付"
-                    android:textColor="#333333"
-                    android:textSize="14sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="0dp"
-                    android:layout_marginLeft="8dp"
-                    android:layout_weight="1"
-                    android:text="推荐银联用户使用"
-                    android:textColor="#666"
-                    android:textSize="14sp" />
-            </LinearLayout>
-
-            <CheckBox
-                android:id="@+id/rb_check_yl"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="20dp"
-                android:checked="false" />
-
-        </LinearLayout>
-
-        <net.qiujuer.genius.ui.widget.Button
-            android:id="@+id/confirm_pay"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/g_button_background"
-            android:text="去付款"
-            android:textColor="@color/white"
-            android:textSize="14sp"
-            app:gTouchColor="@color/deep_orange_a400"
-            app:gTouchCornerRadius="@dimen/lay_12"
-            app:gTouchCornerRadiusBL="@dimen/lay_16"
-            app:gTouchCornerRadiusBR="@dimen/lay_16"
-            app:gTouchCornerRadiusTL="@dimen/lay_16"
-            app:gTouchCornerRadiusTR="@dimen/lay_16"
-            app:gTouchDurationRate="0.7"
-            app:gTouchEffect="auto" />
+        </ScrollView>
     </LinearLayout>
 </android.support.v7.widget.CardView>
