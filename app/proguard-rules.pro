@@ -15,3 +15,9 @@
 #-keepclassmembers class fqcn.of.javascript.interface.for.webview {
 #   public *;
 #}
+-keep class tv.danmaku.ijk.** { *; }
+-dontwarn tv.danmaku.ijk.**
+
+-keep   class com.amap.api.maps.**{*;}
+-keep   class com.autonavi.amap.mapcore.*{*;}
+-keep   class com.amap.api.trace.**{*;}

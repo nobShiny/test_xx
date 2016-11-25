@@ -8,13 +8,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.zte.topsky.R;
 import com.zte.topsky.base.fragment.BaseFragment;
 import com.zte.topsky.bind.activity.BindMonitorActivity;
 import com.zte.topsky.bind.activity.BindShaftActivity;
 import com.zte.topsky.common.utils.OnClickEvent;
+import com.zte.topsky.map.activity.MapDataActiviy;
 import com.zte.topsky.mine.SettingsActivity;
 
 import butterknife.BindView;
@@ -105,9 +105,9 @@ public class MineFragment extends BaseFragment {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.tv_login:
-//                Intent intentLogin = new Intent(mContext,LoginActivity.class);
-//                startActivity(intentLogin);
-                Toast.makeText(mContext, "功能待开发", Toast.LENGTH_SHORT).show();
+                Intent intentLogin = new Intent(mContext,MapDataActiviy.class);
+                startActivity(intentLogin);
+//                Toast.makeText(mContext, "功能待开发", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.tv_register:
 //                Intent intentRegister = new Intent(mContext,RegisterActivity.class);
