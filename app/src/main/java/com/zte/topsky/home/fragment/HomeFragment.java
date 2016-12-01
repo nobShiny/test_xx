@@ -21,12 +21,14 @@ import com.youth.banner.loader.ImageLoader;
 import com.zte.topsky.R;
 import com.zte.topsky.base.fragment.BaseFragment;
 import com.zte.topsky.chartdata.activity.RainFallDataActivity;
+import com.zte.topsky.disaster.activity.DisasterMessageActivity;
 import com.zte.topsky.home.bean.GridCutItem;
 import com.zte.topsky.home.customui.homeScrollView.ControlScrollView;
 import com.zte.topsky.home.customui.homeScrollView.DragGridView;
 import com.zte.topsky.home.customui.homeScrollView.ViewWithSign;
 import com.zte.topsky.home.utils.AppUtils;
 import com.zte.topsky.irrigate.activity.IrrigateCountActivity;
+import com.zte.topsky.map.activity.MapDataActivity;
 import com.zte.topsky.monitor.activity.MonitorActivity;
 import com.zte.topsky.pay.activity.PayActivity;
 import com.zte.topsky.sluicecontrol.activity.SluiceControlActivity;
@@ -57,13 +59,17 @@ public class HomeFragment extends BaseFragment {
             {"阀门管理", ""},
             {"监控", ""},
             {"灌溉统计", ""},
-            {"在线购水", ""}
+            {"在线购水", ""},
+            {"工情地图", ""},
+            {"防汛信息", ""}
     };
 
     private int[] iconId = {R.drawable.ic_home_item_weather,
             R.drawable.ic_home_item_statics,
             R.drawable.ic_home_item_sluice,
             R.drawable.ic_home_item_monitor,
+            R.drawable.ic_home_item_data,
+            R.drawable.ic_home_item_data,
             R.drawable.ic_home_item_data,
             R.drawable.ic_home_item_pay};
 
@@ -195,6 +201,14 @@ public class HomeFragment extends BaseFragment {
                         Intent pay_intent = new Intent(getContext(), PayActivity.class);
                         startActivity(pay_intent);
                         break;
+                    case 6:
+                        Intent map_intent = new Intent(getContext(), MapDataActivity.class);
+                        startActivity(map_intent);
+                        break;
+                    case 7:
+                        Intent disaster_intent = new Intent(getContext(), DisasterMessageActivity.class);
+                        startActivity(disaster_intent);
+                        break;
                     default:
                         break;
                 }
@@ -291,7 +305,7 @@ public class HomeFragment extends BaseFragment {
         public View getView(int position, View convertView, ViewGroup parent) {
             AbsListView.LayoutParams param = new AbsListView.LayoutParams(
                     ViewGroup.LayoutParams.MATCH_PARENT,
-                    (grid.getHeight()-(2*AppUtils.Dp2Px(mContext,4)))/2);
+                    (grid.getHeight()-(3*AppUtils.Dp2Px(mContext,4)))/3);
             ViewHolder viewHolder = null;
             if (convertView == null) {
                 convertView = mInflater.inflate(R.layout.item_home_grid, parent, false);

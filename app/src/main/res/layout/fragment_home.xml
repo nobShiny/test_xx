@@ -17,7 +17,7 @@
             android:id="@+id/banner"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:layout_heightPercent="35%"
+            app:layout_heightPercent="30%"
             app:layout_widthPercent="100%"
             app:image_scale_type="fit_xy"
             app:indicator_margin="4dp" />
@@ -71,7 +71,7 @@
                 android:id="@+id/grid"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                app:layout_heightPercent="65%"
+                app:layout_heightPercent="70%"
                 app:layout_widthPercent="100%"
                 android:layout_below="@id/ll_home_notice"
                 android:layout_marginTop="6dp"

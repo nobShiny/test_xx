@@ -94,7 +94,12 @@
             android:screenOrientation="portrait"
             android:exported="false"
             />
-        <activity android:name=".map.activity.MapDataActiviy"
+        <activity android:name=".map.activity.MapDataActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:exported="false"
+            />
+        <activity android:name=".disaster.activity.DisasterMessageActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:screenOrientation="portrait"
             android:exported="false"

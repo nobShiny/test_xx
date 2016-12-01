@@ -4,9 +4,16 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.amap.api.maps.MapView
+    <include layout="@layout/layout_back" />
+
+    <FrameLayout
+        android:id="@+id/map_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <!--<com.amap.api.maps.MapView
         android:id="@+id/map_main"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent" />-->
 
 </LinearLayout>
