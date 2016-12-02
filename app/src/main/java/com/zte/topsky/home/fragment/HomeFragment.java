@@ -21,7 +21,7 @@ import com.youth.banner.loader.ImageLoader;
 import com.zte.topsky.R;
 import com.zte.topsky.base.fragment.BaseFragment;
 import com.zte.topsky.chartdata.activity.RainFallDataActivity;
-import com.zte.topsky.disaster.activity.DisasterMessageActivity;
+import com.zte.topsky.disaster.activity.DisasterMessageMainActivity;
 import com.zte.topsky.home.bean.GridCutItem;
 import com.zte.topsky.home.customui.homeScrollView.ControlScrollView;
 import com.zte.topsky.home.customui.homeScrollView.DragGridView;
@@ -206,7 +206,7 @@ public class HomeFragment extends BaseFragment {
                         startActivity(map_intent);
                         break;
                     case 7:
-                        Intent disaster_intent = new Intent(getContext(), DisasterMessageActivity.class);
+                        Intent disaster_intent = new Intent(getContext(), DisasterMessageMainActivity.class);
                         startActivity(disaster_intent);
                         break;
                     default:

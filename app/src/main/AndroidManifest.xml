@@ -99,7 +99,37 @@
             android:screenOrientation="portrait"
             android:exported="false"
             />
-        <activity android:name=".disaster.activity.DisasterMessageActivity"
+        <activity android:name=".disaster.activity.DisasterMessageMainActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:exported="false"
+            />
+        <activity android:name=".disaster.activity.CloudsActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:exported="false"
+            />
+        <activity android:name=".disaster.activity.EmergencyActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:exported="false"
+            />
+        <activity android:name=".disaster.activity.RainActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:exported="false"
+            />
+        <activity android:name=".disaster.activity.ReservoirActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:exported="false"
+            />
+        <activity android:name=".disaster.activity.RiverActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:exported="false"
+            />
+        <activity android:name=".disaster.activity.SummaryActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:screenOrientation="portrait"
             android:exported="false"
@@ -111,7 +141,7 @@
             android:name="com.amap.api.v2.apikey"
             android:value="9b55cdd22ff620a849347778a921f97e"/>
 
-        <service android:name="com.amap.api.location.APSService" />
+        <!--<service android:name="com.amap.api.location.APSService" />-->
     </application>
 
 </manifest>

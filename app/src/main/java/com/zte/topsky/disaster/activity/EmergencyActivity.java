@@ -4,9 +4,7 @@ import com.zte.topsky.base.activity.BaseActivity;
 
 /**
  * Created by NobShiny
- * on 2016/11/30 10:44.
+ * on 2016/12/2 16:08.
  */
-
-public class DisasterMessageActivity extends BaseActivity {
-
+public class EmergencyActivity extends BaseActivity{
 }
