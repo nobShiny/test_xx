@@ -13,6 +13,7 @@ import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.youth.banner.Banner;
@@ -61,7 +62,8 @@ public class HomeFragment extends BaseFragment {
             {"灌溉统计", ""},
             {"在线购水", ""},
             {"工情地图", ""},
-            {"防汛信息", ""}
+            {"防汛信息", ""},
+            {"更多功能", ""}
     };
 
     private int[] iconId = {R.drawable.ic_home_item_weather,
@@ -70,8 +72,10 @@ public class HomeFragment extends BaseFragment {
             R.drawable.ic_home_item_monitor,
             R.drawable.ic_home_item_data,
             R.drawable.ic_home_item_data,
-            R.drawable.ic_home_item_data,
-            R.drawable.ic_home_item_pay};
+            R.drawable.ic_home_item_work_map,
+            R.drawable.ic_home_item_flood,
+            R.drawable.ic_home_item_more
+    };
 
     private ArrayList<GridCutItem> mDatas = new ArrayList<>();
     private HomeGirdViewAdapter mAdapter;
@@ -208,6 +212,9 @@ public class HomeFragment extends BaseFragment {
                     case 7:
                         Intent disaster_intent = new Intent(getContext(), DisasterMessageMainActivity.class);
                         startActivity(disaster_intent);
+                        break;
+                    case 8:
+                        Toast.makeText(getContext(), "敬请期待", Toast.LENGTH_SHORT).show();
                         break;
                     default:
                         break;

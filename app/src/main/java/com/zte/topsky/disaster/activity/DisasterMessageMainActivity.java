@@ -34,6 +34,8 @@ public class DisasterMessageMainActivity extends BaseActivity {
     DragGridView gridView;
     @BindView(R.id.scroller_view)
     ControlScrollView scroller;
+    @BindView(R.id.tv_title_text)
+    TextView tvTitleText;
 
     private ArrayList<GridCutItem> mDatas = new ArrayList<>();
     private DisasterControlGirdViewAdapter mAdapter;
@@ -46,17 +48,18 @@ public class DisasterMessageMainActivity extends BaseActivity {
             {"紧急联系", ""},
     };
 
-    private int[] iconId = {R.drawable.ic_home_item_weather,
-            R.drawable.ic_home_item_monitor,
-            R.drawable.ic_home_item_data,
-            R.drawable.ic_home_item_data,
-            R.drawable.ic_home_item_data,
-            R.drawable.ic_home_item_pay};
+    private int[] iconId = {R.drawable.ic_disaster_messages,
+            R.drawable.ic_disaster_rain,
+            R.drawable.ic_disaster_cloud,
+            R.drawable.ic_disaster_water_conditions,
+            R.drawable.ic_disaster_reservoirs,
+            R.drawable.ic_disaster_emergency};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState, R.layout.activity_disaster_message);
         addActivity(this);
+        tvTitleText.setText("防汛信息");
         scroller.smoothScrollTo(0, 0);
         mDatas.clear();
         for (int i = 0; i < gridDatas.length; i++) {
@@ -67,7 +70,7 @@ public class DisasterMessageMainActivity extends BaseActivity {
     }
 
     private void initFunctionArea() {
-        mAdapter = new DisasterControlGirdViewAdapter(this,mDatas,gridView);
+        mAdapter = new DisasterControlGirdViewAdapter(this, mDatas, gridView);
         gridView.setAdapter(mAdapter);
         scroller.setScrollState(new ControlScrollView.ScrollState() {
             @Override
@@ -140,7 +143,7 @@ public class DisasterMessageMainActivity extends BaseActivity {
         private Context mContext;
         private ArrayList<GridCutItem> mDatas;
 
-        public DisasterControlGirdViewAdapter(Context context, ArrayList<GridCutItem> data,DragGridView grid) {
+        public DisasterControlGirdViewAdapter(Context context, ArrayList<GridCutItem> data, DragGridView grid) {
             mContext = context;
             mDatas = data;
             this.grid = grid;
@@ -166,7 +169,7 @@ public class DisasterMessageMainActivity extends BaseActivity {
         public View getView(int position, View convertView, ViewGroup parent) {
             AbsListView.LayoutParams param = new AbsListView.LayoutParams(
                     ViewGroup.LayoutParams.MATCH_PARENT,
-                    (grid.getHeight()-(3* AppUtils.Dp2Px(mContext,4)))/3);
+                    (grid.getHeight() - (3 * AppUtils.Dp2Px(mContext, 4))) / 3);
             ViewHolder viewHolder = null;
             if (convertView == null) {
                 convertView = mInflater.inflate(R.layout.item_home_grid, parent, false);

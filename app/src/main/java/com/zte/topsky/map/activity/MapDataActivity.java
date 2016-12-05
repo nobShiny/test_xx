@@ -37,10 +37,12 @@ import butterknife.BindView;
  */
 
 public class MapDataActivity extends BaseActivity implements AMap.OnMarkerClickListener,
-        AMap.InfoWindowAdapter,AMap.OnMapClickListener,AMap.OnInfoWindowClickListener {
+        AMap.InfoWindowAdapter, AMap.OnMapClickListener, AMap.OnInfoWindowClickListener {
 
     @BindView(R.id.map_content)
     FrameLayout mContainerLayout;
+    @BindView(R.id.tv_title_text)
+    TextView tvTitleText;
     private MapView mMapView;
     private AMap aMap;
     private UiSettings mUiSettings;
@@ -51,6 +53,7 @@ public class MapDataActivity extends BaseActivity implements AMap.OnMarkerClickL
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState, R.layout.activity_map_data);
         addActivity(this);
+        tvTitleText.setText("工情地图");
         AMapOptions aOptions = new AMapOptions();
         aOptions.camera(MapNet.getNeedCityPosition(this));
         mMapView = new MapView(this, aOptions);
@@ -172,53 +175,53 @@ public class MapDataActivity extends BaseActivity implements AMap.OnMarkerClickL
         return false;
     }
 
-    private void render(Marker marker, View infoWindowView ,PumpDataBean data) {
+    private void render(Marker marker, View infoWindowView, PumpDataBean data) {
         TextView name = (TextView) infoWindowView.findViewById(R.id.tv_map_window_name);
         if (!data.getPumpTitle().isEmpty()) {
             name.setText(data.getPumpTitle());
-        }else{
+        } else {
             name.setText("");
         }
 
         TextView admin = (TextView) infoWindowView.findViewById(R.id.tv_map_window_administrator);
         if (!data.getAdministrtor().isEmpty()) {
             admin.setText(data.getAdministrtor());
-        }else{
+        } else {
             admin.setText("");
         }
 
         TextView phone = (TextView) infoWindowView.findViewById(R.id.tv_map_window_phone_number);
         if (!data.getPhoneNumber().isEmpty()) {
             phone.setText(data.getPhoneNumber());
-        }else{
+        } else {
             phone.setText("");
         }
 
         TextView state = (TextView) infoWindowView.findViewById(R.id.tv_map_window_state);
         if (!data.getState().isEmpty()) {
             state.setText(data.getState());
-        }else{
+        } else {
             state.setText("");
         }
 
         TextView deep = (TextView) infoWindowView.findViewById(R.id.tv_map_window_deep);
         if (!data.getDeep().isEmpty()) {
             deep.setText(data.getDeep());
-        }else{
+        } else {
             deep.setText("");
         }
 
         TextView num = (TextView) infoWindowView.findViewById(R.id.tv_map_window_sum);
         if (!data.getSum().isEmpty()) {
             num.setText(data.getSum());
-        }else{
+        } else {
             num.setText("");
         }
 
         TextView size = (TextView) infoWindowView.findViewById(R.id.tv_map_window_size);
         if (!data.getSize().isEmpty()) {
             size.setText(data.getSize());
-        }else{
+        } else {
             size.setText("");
         }
 
@@ -234,8 +237,8 @@ public class MapDataActivity extends BaseActivity implements AMap.OnMarkerClickL
         View infoWindow = getLayoutInflater().inflate(
                 R.layout.layout_map_datail, null);
         for (int i = 0; i < mPump.size(); i++) {
-            if (marker.getTitle().equals(mPump.get(i).getPumpTitle())){
-                render(marker, infoWindow , mPump.get(i));
+            if (marker.getTitle().equals(mPump.get(i).getPumpTitle())) {
+                render(marker, infoWindow, mPump.get(i));
             }
         }
 
