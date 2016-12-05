@@ -21,3 +21,4 @@
 -keep   class com.amap.api.maps.**{*;}
 -keep   class com.autonavi.amap.mapcore.*{*;}
 -keep   class com.amap.api.trace.**{*;}
+-dontwarn com.amap.api.maps.**

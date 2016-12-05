@@ -100,6 +100,13 @@ public class DisasterMessageMainActivity extends BaseActivity {
             }
         });
 
+//        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                Toast.makeText(DisasterMessageMainActivity.this, "开发中...", Toast.LENGTH_SHORT).show();
+//            }
+//        });
+
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {

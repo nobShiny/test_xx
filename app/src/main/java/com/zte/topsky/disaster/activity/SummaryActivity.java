@@ -1,6 +1,7 @@
 package com.zte.topsky.disaster.activity;
 
 import android.os.Bundle;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.zte.topsky.R;
@@ -24,6 +25,8 @@ public class SummaryActivity extends BaseActivity {
     TextView tvReservoir;
     @BindView(R.id.tv_complex)
     TextView tvComplex;
+    @BindView(R.id.ll_s1)
+    RelativeLayout llS1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,4 +44,8 @@ public class SummaryActivity extends BaseActivity {
         tvComplex.setText("目前全区域汛情平稳。");
     }
 
+//    @OnClick(R.id.ll_s1)
+//    public void onClick() {
+//        tvSummary.setText(".............");
+//    }
 }
