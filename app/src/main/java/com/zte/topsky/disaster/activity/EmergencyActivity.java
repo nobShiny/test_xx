@@ -6,10 +6,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,6 +17,7 @@ import com.zhy.adapter.recyclerview.MultiItemTypeAdapter;
 import com.zhy.adapter.recyclerview.base.ViewHolder;
 import com.zte.topsky.R;
 import com.zte.topsky.base.activity.BaseActivity;
+import com.zte.topsky.disaster.adapter.EmergencyAdapter;
 import com.zte.topsky.disaster.bean.ContractList;
 import com.zte.topsky.disaster.util.CallUtil;
 
@@ -42,6 +40,7 @@ public class EmergencyActivity extends BaseActivity {
     private List<ContractList> mList;
     private CommonAdapter<String> mAdapter;
     private String mNumber;
+    private EmergencyAdapter numberAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +53,6 @@ public class EmergencyActivity extends BaseActivity {
     private void initView() {
         mList = textMesaageData();
         rlContractList.setLayoutManager(new LinearLayoutManager(this));
-//        rlContractList.addItemDecoration(null);
         mAdapter = new CommonAdapter(this, R.layout.item_emergency_contract, mList) {
             @Override
             protected void convert(ViewHolder holder, Object o, int position) {
@@ -75,45 +73,9 @@ public class EmergencyActivity extends BaseActivity {
             @Override
             public void onItemClick(View view, RecyclerView.ViewHolder holder, int position) {
                 mNumber = mList.get(position).getPhoneNumber();
+                numberAdapter = new EmergencyAdapter(EmergencyActivity.this, mNumber);
                 DialogPlus dialog = DialogPlus.newDialog(EmergencyActivity.this)
-                        .setAdapter(new BaseAdapter() {
-                            @Override
-                            public int getCount() {
-                                return 1;
-                            }
-
-                            @Override
-                            public Object getItem(int position) {
-                                return position;
-                            }
-
-                            @Override
-                            public long getItemId(int position) {
-                                return position;
-                            }
-
-                            @Override
-                            public View getView(int position, View convertView, ViewGroup parent) {
-                                ViewHolder viewHolder;
-                                View view = convertView;
-
-                                if (view == null) {
-                                    view = LayoutInflater.from(EmergencyActivity.this).
-                                            inflate(R.layout.item_emergency_contract_action, null);
-                                    viewHolder = new ViewHolder();
-                                    viewHolder.textView = (TextView) view.findViewById(R.id.tv_action);
-                                    viewHolder.textView.setText(mNumber);
-                                    view.setTag(viewHolder);
-                                } else {
-                                    viewHolder = (ViewHolder) view.getTag();
-                                }
-                                return view;
-                            }
-
-                            class ViewHolder {
-                                TextView textView;
-                            }
-                        })
+                        .setAdapter(numberAdapter)
                         .setGravity(Gravity.BOTTOM)
                         .setCancelable(true)
                         .setOnItemClickListener(new OnItemClickListener() {

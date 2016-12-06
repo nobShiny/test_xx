@@ -34,6 +34,7 @@
                         android:layout_alignParentLeft="true"
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="8dp"
+                        android:textColor="@color/white"
                         android:text="汛情摘要"
                         android:textSize="24sp" />
                 </RelativeLayout>
@@ -63,6 +64,7 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentLeft="true"
                         android:layout_centerVertical="true"
+                        android:textColor="@color/white"
                         android:layout_marginLeft="8dp"
                         android:text="江河水情"
                         android:textSize="24sp" />
@@ -94,6 +96,7 @@
                         android:layout_alignParentLeft="true"
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="8dp"
+                        android:textColor="@color/white"
                         android:text="水库水情"
                         android:textSize="24sp" />
                 </RelativeLayout>
@@ -123,6 +126,7 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentLeft="true"
                         android:layout_centerVertical="true"
+                        android:textColor="@color/white"
                         android:layout_marginLeft="8dp"
                         android:text="汛情综述"
                         android:textSize="24sp" />

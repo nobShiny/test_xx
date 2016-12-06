@@ -63,7 +63,7 @@ public class HomeFragment extends BaseFragment {
             {"在线购水", ""},
             {"工情地图", ""},
             {"防汛信息", ""},
-            {"更多功能", ""}
+            {"更多", ""}
     };
 
     private int[] iconId = {R.drawable.ic_home_item_weather,
