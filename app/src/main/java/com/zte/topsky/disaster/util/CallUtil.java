@@ -1,8 +1,13 @@
 package com.zte.topsky.disaster.util;
 
+import android.Manifest;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.widget.Toast;
 
 import java.util.regex.Matcher;
@@ -15,12 +20,30 @@ import java.util.regex.Pattern;
 
 public class CallUtil {
 
-    public static void callTo(Context context,String number){
+    public static final int MY_PERMISSIONS_REQUEST_CALL_PHONE = 1;
+
+    public static void callOfSecurity(Context context, Activity activity, String number) {
+        if (isPhoneNumber(number)) {
+            if (ContextCompat.checkSelfPermission(context, Manifest.permission.CALL_PHONE)
+                    != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(activity,
+                        new String[]{Manifest.permission.CALL_PHONE},
+                        MY_PERMISSIONS_REQUEST_CALL_PHONE);
+            } else {
+                Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + number));
+                context.startActivity(intent);
+            }
+        } else {
+            Toast.makeText(context, "电话不能为空", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public static void callTo(Context context, String number) {
         if (isPhoneNumber(number)) {
             Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + number));
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(intent);
-        }else{
+        } else {
             Toast.makeText(context, "电话不能为空", Toast.LENGTH_SHORT).show();
         }
     }

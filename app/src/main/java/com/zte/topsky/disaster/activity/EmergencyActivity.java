@@ -1,17 +1,20 @@
 package com.zte.topsky.disaster.activity;
 
-import android.Manifest;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.orhanobut.dialogplus.DialogPlus;
+import com.orhanobut.dialogplus.OnItemClickListener;
 import com.zhy.adapter.recyclerview.CommonAdapter;
 import com.zhy.adapter.recyclerview.MultiItemTypeAdapter;
 import com.zhy.adapter.recyclerview.base.ViewHolder;
@@ -30,9 +33,6 @@ import butterknife.BindView;
  * on 2016/12/2 16:08.
  */
 public class EmergencyActivity extends BaseActivity {
-
-
-    private static final int MY_PERMISSIONS_REQUEST_CALL_PHONE = 1;
 
     @BindView(R.id.tv_title_text)
     TextView tvTitleText;
@@ -58,11 +58,11 @@ public class EmergencyActivity extends BaseActivity {
         mAdapter = new CommonAdapter(this, R.layout.item_emergency_contract, mList) {
             @Override
             protected void convert(ViewHolder holder, Object o, int position) {
-                if (position%2==0) {
-                    holder.setBackgroundColor(R.id.ll_item,EmergencyActivity.this.getResources().
+                if (position % 2 == 0) {
+                    holder.setBackgroundColor(R.id.ll_item, EmergencyActivity.this.getResources().
                             getColor(R.color.emergency_item_background_light_color));
-                }else{
-                    holder.setBackgroundColor(R.id.ll_item,EmergencyActivity.this.getResources().
+                } else {
+                    holder.setBackgroundColor(R.id.ll_item, EmergencyActivity.this.getResources().
                             getColor(R.color.emergency_item_background_dark_color));
                 }
                 holder.setText(R.id.tv_emergency_name, mList.get(position).getName());
@@ -74,17 +74,58 @@ public class EmergencyActivity extends BaseActivity {
         mAdapter.setOnItemClickListener(new MultiItemTypeAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, RecyclerView.ViewHolder holder, int position) {
-                //TODO 加入打电话的弹窗
                 mNumber = mList.get(position).getPhoneNumber();
-                if (ContextCompat.checkSelfPermission(EmergencyActivity.this, Manifest.permission.CALL_PHONE)
-                        != PackageManager.PERMISSION_GRANTED) {
-                    ActivityCompat.requestPermissions(EmergencyActivity.this,
-                            new String[]{Manifest.permission.CALL_PHONE},
-                            MY_PERMISSIONS_REQUEST_CALL_PHONE);
-                } else {
-                    CallUtil.callTo(EmergencyActivity.this, mNumber);
-                }
+                DialogPlus dialog = DialogPlus.newDialog(EmergencyActivity.this)
+                        .setAdapter(new BaseAdapter() {
+                            @Override
+                            public int getCount() {
+                                return 1;
+                            }
 
+                            @Override
+                            public Object getItem(int position) {
+                                return position;
+                            }
+
+                            @Override
+                            public long getItemId(int position) {
+                                return position;
+                            }
+
+                            @Override
+                            public View getView(int position, View convertView, ViewGroup parent) {
+                                ViewHolder viewHolder;
+                                View view = convertView;
+
+                                if (view == null) {
+                                    view = LayoutInflater.from(EmergencyActivity.this).
+                                            inflate(R.layout.item_emergency_contract_action, null);
+                                    viewHolder = new ViewHolder();
+                                    viewHolder.textView = (TextView) view.findViewById(R.id.tv_action);
+                                    viewHolder.textView.setText(mNumber);
+                                    view.setTag(viewHolder);
+                                } else {
+                                    viewHolder = (ViewHolder) view.getTag();
+                                }
+                                return view;
+                            }
+
+                            class ViewHolder {
+                                TextView textView;
+                            }
+                        })
+                        .setGravity(Gravity.BOTTOM)
+                        .setCancelable(true)
+                        .setOnItemClickListener(new OnItemClickListener() {
+                            @Override
+                            public void onItemClick(DialogPlus dialog, Object item, View view, int position) {
+                                //打电话
+                                CallUtil.callOfSecurity(EmergencyActivity.this, EmergencyActivity.this, mNumber);
+                            }
+                        })
+                        .setExpanded(false)
+                        .create();
+                dialog.show();
             }
 
             @Override
@@ -118,7 +159,7 @@ public class EmergencyActivity extends BaseActivity {
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        if (requestCode == MY_PERMISSIONS_REQUEST_CALL_PHONE) {
+        if (requestCode == CallUtil.MY_PERMISSIONS_REQUEST_CALL_PHONE) {
             if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 CallUtil.callTo(this, mNumber);
             } else {
