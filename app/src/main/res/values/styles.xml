@@ -118,7 +118,6 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:background">@color/emergency_item_background_color</item>
         <item name="android:orientation">horizontal</item>
-        <item name="android:layout_marginTop">4dp</item>
     </style>
 
     <style name="emergency_contract_item_style">

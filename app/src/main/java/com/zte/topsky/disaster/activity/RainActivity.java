@@ -115,18 +115,20 @@ public class RainActivity extends BaseActivity implements AMap.OnMarkerClickList
 
     @OnClick(R.id.ll_rain_list)
     public void onClick() {
+        listAdapter = new RainListAdapter(this,mData);
         dialog = DialogPlus.newDialog(RainActivity.this)
                 .setAdapter(listAdapter)
+                .setHeader(R.layout.layout_rain_list_header)
                 .setGravity(Gravity.BOTTOM)
                 .setCancelable(true)
-                .setExpanded(true)
+                .setExpanded(true,800)
                 .create();
         dialog.show();
-        if (dialog.isShowing()) {
-            ivRianListIndicator.setImageDrawable(this.getResources().getDrawable(R.drawable.ic_show_list_down));
-        }else{
-            ivRianListIndicator.setImageDrawable(this.getResources().getDrawable(R.drawable.ic_show_list_up));
-        }
+//        if (dialog.isShowing()) {
+//            ivRianListIndicator.setImageDrawable(this.getResources().getDrawable(R.drawable.ic_show_list_down));
+//        }else{
+//            ivRianListIndicator.setImageDrawable(this.getResources().getDrawable(R.drawable.ic_show_list_up));
+//        }
     }
 
     @Override
