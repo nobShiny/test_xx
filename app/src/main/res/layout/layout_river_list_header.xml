@@ -45,7 +45,7 @@
             android:gravity="center"
             android:textColor="@color/white"
             android:textSize="18sp"
-            android:text="当前库容" />
+            android:text="警戒水位" />
         <View
             android:layout_width="1dp"
             android:layout_height="40dp"
@@ -60,22 +60,13 @@
             android:gravity="center"
             android:textColor="@color/white"
             android:textSize="18sp"
-            android:text="讯限水位" />
+            android:text="危机水位" />
         <View
             android:layout_width="1dp"
             android:layout_height="40dp"
             android:layout_marginLeft="2dp"
             android:layout_marginRight="2dp"
             android:background="@color/white" />
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:textColor="@color/white"
-            android:textSize="18sp"
-            android:text="蓄水率" />
     </LinearLayout>
 
 </LinearLayout>

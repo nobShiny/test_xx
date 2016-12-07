@@ -12,17 +12,15 @@ public class RiverDataBean {
     private LatLng position;
     private String name;
     private String currentLevel;
-    private String capacity;
-    private String restrictLevel;
-    private String storageRate;
+    private String alertLevel;
+    private String criticalLevel;
 
-    public RiverDataBean(LatLng position, String name, String currentLevel, String capacity, String restrictLevel, String storageRate) {
+    public RiverDataBean(LatLng position, String name, String currentLevel, String alertLevel, String criticalLevel) {
         this.position = position;
         this.name = name;
         this.currentLevel = currentLevel;
-        this.capacity = capacity;
-        this.restrictLevel = restrictLevel;
-        this.storageRate = storageRate;
+        this.alertLevel = alertLevel;
+        this.criticalLevel = criticalLevel;
     }
 
     public LatLng getPosition() {
@@ -49,27 +47,19 @@ public class RiverDataBean {
         this.currentLevel = currentLevel;
     }
 
-    public String getCapacity() {
-        return capacity;
+    public String getAlertLevel() {
+        return alertLevel;
     }
 
-    public void setCapacity(String capacity) {
-        this.capacity = capacity;
+    public void setAlertLevel(String alertLevel) {
+        this.alertLevel = alertLevel;
     }
 
-    public String getRestrictLevel() {
-        return restrictLevel;
+    public String getCriticalLevel() {
+        return criticalLevel;
     }
 
-    public void setRestrictLevel(String restrictLevel) {
-        this.restrictLevel = restrictLevel;
-    }
-
-    public String getStorageRate() {
-        return storageRate;
-    }
-
-    public void setStorageRate(String storageRate) {
-        this.storageRate = storageRate;
+    public void setCriticalLevel(String criticalLevel) {
+        this.criticalLevel = criticalLevel;
     }
 }

@@ -65,10 +65,9 @@ public class RiverListAdapter extends BaseAdapter {
             }
 
             viewHolder.tvRiverName.setText(mData.get(position).getName());
-            viewHolder.tvRiverWaterLevel.setText(mData.get(position).getCurrentLevel());
-            viewHolder.tvRiverWaterCapacity.setText(mData.get(position).getCapacity());
-            viewHolder.tvRiverRestrictLevel.setText(mData.get(position).getRestrictLevel());
-            viewHolder.tvRiverStorageRate.setText(mData.get(position).getStorageRate());
+            viewHolder.tvRiverCurrentLevel.setText(mData.get(position).getCurrentLevel());
+            viewHolder.tvRiverAlertLevel.setText(mData.get(position).getAlertLevel());
+            viewHolder.tvRiverCriticalLevel.setText(mData.get(position).getCriticalLevel());
 
             convertView.setTag(viewHolder);
         } else {
@@ -80,14 +79,12 @@ public class RiverListAdapter extends BaseAdapter {
     static class ViewHolder {
         @BindView(R.id.tv_river_name)
         TextView tvRiverName;
-        @BindView(R.id.tv_river_water_level)
-        TextView tvRiverWaterLevel;
-        @BindView(R.id.tv_river_water_capacity)
-        TextView tvRiverWaterCapacity;
-        @BindView(R.id.tv_river_restrict_level)
-        TextView tvRiverRestrictLevel;
-        @BindView(R.id.tv_river_storage_rate)
-        TextView tvRiverStorageRate;
+        @BindView(R.id.tv_river_current_level)
+        TextView tvRiverCurrentLevel;
+        @BindView(R.id.tv_river_alert_level)
+        TextView tvRiverAlertLevel;
+        @BindView(R.id.tv_river_critical_level)
+        TextView tvRiverCriticalLevel;
         @BindView(R.id.ll_item)
         LinearLayout llItem;
 

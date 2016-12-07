@@ -61,6 +61,8 @@ public class ReservoirActivity extends BaseActivity implements AMap.OnMarkerClic
         super.onCreate(savedInstanceState, R.layout.activity_disaster_reservoir);
         addActivity(this);
         tvTitleText.setText("水库水情");
+        initData();
+        setUpMap(savedInstanceState);
     }
 
     private void initData() {

@@ -71,21 +71,27 @@ public class DisasterMapNet {
 
     public static List<RiverDataBean> getInitRiverDetailedData(Context context){
         List<RiverDataBean> list = new ArrayList<>();
-        RiverDataBean test1 = new RiverDataBean(MapUtils.getAMP(context,new LatLng(41.214951,108.355671),
-                     CoordinateConverter.CoordType.BAIDU),"德岭山水库","263.56","6190","270.06","80.43%");
-        RiverDataBean test2 = new RiverDataBean(MapUtils.getAMP(context,new LatLng(41.20948,107.303585),
-                     CoordinateConverter.CoordType.BAIDU),"狼山水库","118.05","5939","120.19","87.34%");
-        RiverDataBean test3 = new RiverDataBean(MapUtils.getAMP(context,new LatLng(41.372720,109.112606),
-                     CoordinateConverter.CoordType.BAIDU),"新呼热水库","122.51","4982","126.44","79.71%");
-        RiverDataBean test4 = new RiverDataBean(MapUtils.getAMP(context,new LatLng(41.084419,106.294648),
-                     CoordinateConverter.CoordType.BAIDU),"哈布其盖水库","135.62","5733","140.00","81.18%");
-        RiverDataBean test5 = new RiverDataBean(MapUtils.getAMP(context,new LatLng(41.344170,108.192315),
-                     CoordinateConverter.CoordType.BAIDU),"洪高日水库","122.51","2598","142.18","85.80%");
+        RiverDataBean test1 = new RiverDataBean(MapUtils.getAMP(context,new LatLng(40.581303,107.273689),
+                     CoordinateConverter.CoordType.BAIDU),"西渠","53.47","55.40","56.40");
+        RiverDataBean test2 = new RiverDataBean(MapUtils.getAMP(context,new LatLng(40.493539,107.242040),
+                     CoordinateConverter.CoordType.BAIDU),"永济渠","65.76","69.00","70.00");
+        RiverDataBean test3 = new RiverDataBean(MapUtils.getAMP(context,new LatLng(41.20937,108.571424),
+                     CoordinateConverter.CoordType.BAIDU),"磨楞河","53.19","57.50","58.50");
+        RiverDataBean test4 = new RiverDataBean(MapUtils.getAMP(context,new LatLng(40.393946,107.131759),
+                     CoordinateConverter.CoordType.BAIDU),"黄济渠","48.87","53.00","54.50");
+        RiverDataBean test5 = new RiverDataBean(MapUtils.getAMP(context,new LatLng(40.563249,108.171367),
+                     CoordinateConverter.CoordType.BAIDU),"通济渠","34.74","40.17","42.17");
+        RiverDataBean test6 = new RiverDataBean(MapUtils.getAMP(context,new LatLng(41.125368,107.463568),
+                     CoordinateConverter.CoordType.BAIDU),"乌加河","78.58","82.00","82.80");
+        RiverDataBean test7 = new RiverDataBean(MapUtils.getAMP(context,new LatLng(40.481273,107.335691),
+                     CoordinateConverter.CoordType.BAIDU),"黄河总干渠","61.86","66.00","67.00");
         list.add(test1);
         list.add(test2);
         list.add(test3);
         list.add(test4);
         list.add(test5);
+        list.add(test6);
+        list.add(test7);
 
         return list;
     }
