@@ -35,8 +35,7 @@ import butterknife.OnClick;
  * Created by NobShiny
  * on 2016/12/2 16:05.
  */
-public class RainActivity extends BaseActivity implements AMap.OnMarkerClickListener,
-        AMap.OnMapClickListener{
+public class RainActivity extends BaseActivity implements AMap.OnMarkerClickListener,AMap.OnMapClickListener{
 
     @BindView(R.id.tv_title_text)
     TextView tvTitleText;

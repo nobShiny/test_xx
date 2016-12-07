@@ -6,6 +6,8 @@ import com.amap.api.maps.CoordinateConverter;
 import com.amap.api.maps.model.CameraPosition;
 import com.amap.api.maps.model.LatLng;
 import com.zte.topsky.disaster.bean.RainDataBean;
+import com.zte.topsky.disaster.bean.ReservoirDataBean;
+import com.zte.topsky.disaster.bean.RiverDataBean;
 import com.zte.topsky.map.utils.MapUtils;
 
 import java.util.ArrayList;
@@ -63,6 +65,48 @@ public class DisasterMapNet {
         list.add(test7);
         list.add(test8);
         list.add(test9);
+
+        return list;
+    }
+
+    public static List<RiverDataBean> getInitRiverDetailedData(Context context){
+        List<RiverDataBean> list = new ArrayList<>();
+        RiverDataBean test1 = new RiverDataBean(MapUtils.getAMP(context,new LatLng(41.214951,108.355671),
+                     CoordinateConverter.CoordType.BAIDU),"德岭山水库","263.56","6190","270.06","80.43%");
+        RiverDataBean test2 = new RiverDataBean(MapUtils.getAMP(context,new LatLng(41.20948,107.303585),
+                     CoordinateConverter.CoordType.BAIDU),"狼山水库","118.05","5939","120.19","87.34%");
+        RiverDataBean test3 = new RiverDataBean(MapUtils.getAMP(context,new LatLng(41.372720,109.112606),
+                     CoordinateConverter.CoordType.BAIDU),"新呼热水库","122.51","4982","126.44","79.71%");
+        RiverDataBean test4 = new RiverDataBean(MapUtils.getAMP(context,new LatLng(41.084419,106.294648),
+                     CoordinateConverter.CoordType.BAIDU),"哈布其盖水库","135.62","5733","140.00","81.18%");
+        RiverDataBean test5 = new RiverDataBean(MapUtils.getAMP(context,new LatLng(41.344170,108.192315),
+                     CoordinateConverter.CoordType.BAIDU),"洪高日水库","122.51","2598","142.18","85.80%");
+        list.add(test1);
+        list.add(test2);
+        list.add(test3);
+        list.add(test4);
+        list.add(test5);
+
+        return list;
+    }
+
+    public static List<ReservoirDataBean> getInitReservoirDetailedData(Context context){
+        List<ReservoirDataBean> list = new ArrayList<>();
+        ReservoirDataBean test1 = new ReservoirDataBean(MapUtils.getAMP(context,new LatLng(41.214951,108.355671),
+                     CoordinateConverter.CoordType.BAIDU),"德岭山水库","263.56","6190","270.06","80.43%");
+        ReservoirDataBean test2 = new ReservoirDataBean(MapUtils.getAMP(context,new LatLng(41.20948,107.303585),
+                     CoordinateConverter.CoordType.BAIDU),"狼山水库","118.05","5939","120.19","87.34%");
+        ReservoirDataBean test3 = new ReservoirDataBean(MapUtils.getAMP(context,new LatLng(41.372720,109.112606),
+                     CoordinateConverter.CoordType.BAIDU),"新呼热水库","122.51","4982","126.44","79.71%");
+        ReservoirDataBean test4 = new ReservoirDataBean(MapUtils.getAMP(context,new LatLng(41.084419,106.294648),
+                     CoordinateConverter.CoordType.BAIDU),"哈布其盖水库","135.62","5733","140.00","81.18%");
+        ReservoirDataBean test5 = new ReservoirDataBean(MapUtils.getAMP(context,new LatLng(41.344170,108.192315),
+                     CoordinateConverter.CoordType.BAIDU),"洪高日水库","122.51","2598","142.18","85.80%");
+        list.add(test1);
+        list.add(test2);
+        list.add(test3);
+        list.add(test4);
+        list.add(test5);
 
         return list;
     }

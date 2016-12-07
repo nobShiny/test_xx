@@ -16,8 +16,9 @@
 
         <TextView
             android:id="@+id/tv_rain_list"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:layout_weight="8"
             android:gravity="center"
             android:text="2016-11-05至2016-12-09"
             android:textColor="@color/white"
@@ -25,11 +26,13 @@
 
         <ImageView
             android:id="@+id/iv_rian_list_indicator"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:layout_weight="1"
             android:scaleType="centerInside"
             android:layout_marginLeft="4dp"
-            android:src="@drawable/ic_show_list_down" />
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/ic_show_list_more" />
     </LinearLayout>
 
     <FrameLayout
