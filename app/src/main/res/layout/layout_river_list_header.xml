@@ -11,13 +11,13 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
+            android:text="站名"
             android:textColor="@color/white"
-            android:textSize="18sp"
-            android:text="站名" />
+            android:textSize="16sp" />
 
         <View
             android:layout_width="1dp"
-            android:layout_height="40dp"
+            android:layout_height="60dp"
             android:layout_marginLeft="2dp"
             android:layout_marginRight="2dp"
             android:background="@color/white" />
@@ -27,13 +27,13 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
+            android:text="当前水位（m）"
             android:textColor="@color/white"
-            android:textSize="18sp"
-            android:text="当前水位" />
+            android:textSize="16sp" />
 
         <View
             android:layout_width="1dp"
-            android:layout_height="40dp"
+            android:layout_height="60dp"
             android:layout_marginLeft="2dp"
             android:layout_marginRight="2dp"
             android:background="@color/white" />
@@ -43,12 +43,13 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
+            android:text="警戒水位（m）"
             android:textColor="@color/white"
-            android:textSize="18sp"
-            android:text="警戒水位" />
+            android:textSize="16sp" />
+
         <View
             android:layout_width="1dp"
-            android:layout_height="40dp"
+            android:layout_height="60dp"
             android:layout_marginLeft="2dp"
             android:layout_marginRight="2dp"
             android:background="@color/white" />
@@ -58,15 +59,25 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
+            android:text="危机水位（m）"
             android:textColor="@color/white"
-            android:textSize="18sp"
-            android:text="危机水位" />
+            android:textSize="16sp" />
+
         <View
             android:layout_width="1dp"
-            android:layout_height="40dp"
+            android:layout_height="60dp"
             android:layout_marginLeft="2dp"
             android:layout_marginRight="2dp"
             android:background="@color/white" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="流量（m³/s）"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
     </LinearLayout>
 
 </LinearLayout>

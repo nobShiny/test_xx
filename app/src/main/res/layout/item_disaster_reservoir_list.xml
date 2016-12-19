@@ -31,8 +31,6 @@
             <View
                 android:layout_width="1dp"
                 android:layout_height="36dp"
-                android:layout_marginLeft="2dp"
-                android:layout_marginRight="2dp"
                 android:background="@color/white" />
 
             <TextView
@@ -48,8 +46,6 @@
             <View
                 android:layout_width="1dp"
                 android:layout_height="36dp"
-                android:layout_marginLeft="2dp"
-                android:layout_marginRight="2dp"
                 android:background="@color/white" />
 
             <TextView
@@ -65,8 +61,6 @@
             <View
                 android:layout_width="1dp"
                 android:layout_height="36dp"
-                android:layout_marginLeft="2dp"
-                android:layout_marginRight="2dp"
                 android:background="@color/white" />
 
             <TextView
@@ -82,12 +76,25 @@
             <View
                 android:layout_width="1dp"
                 android:layout_height="36dp"
-                android:layout_marginLeft="2dp"
-                android:layout_marginRight="2dp"
                 android:background="@color/white" />
 
             <TextView
                 android:id="@+id/tv_reservoir_storage_rate"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="@color/listTextColor"
+                tools:text="sss"
+                android:textSize="16sp" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="36dp"
+                android:background="@color/white" />
+
+            <TextView
+                android:id="@+id/tv_reservoir_quality"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"

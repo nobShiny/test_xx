@@ -136,8 +136,6 @@
             android:exported="false"
             />
 
-        //发布版 6630fff64e09906a7df86a47459ed949
-        //debug版 9b55cdd22ff620a849347778a921f97e
         <meta-data
             android:name="com.amap.api.v2.apikey"
             android:value="9b55cdd22ff620a849347778a921f97e"/>

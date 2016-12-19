@@ -14,13 +14,15 @@ public class RiverDataBean {
     private String currentLevel;
     private String alertLevel;
     private String criticalLevel;
+    private String flow;
 
-    public RiverDataBean(LatLng position, String name, String currentLevel, String alertLevel, String criticalLevel) {
+    public RiverDataBean(LatLng position, String name, String currentLevel, String alertLevel, String criticalLevel, String flow) {
         this.position = position;
         this.name = name;
         this.currentLevel = currentLevel;
         this.alertLevel = alertLevel;
         this.criticalLevel = criticalLevel;
+        this.flow = flow;
     }
 
     public LatLng getPosition() {
@@ -61,5 +63,13 @@ public class RiverDataBean {
 
     public void setCriticalLevel(String criticalLevel) {
         this.criticalLevel = criticalLevel;
+    }
+
+    public String getFlow() {
+        return flow;
+    }
+
+    public void setFlow(String flow) {
+        this.flow = flow;
     }
 }

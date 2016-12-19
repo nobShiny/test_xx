@@ -153,8 +153,8 @@ public class RainFallView extends BaseChartView {
 
             });
             //标题
-            chart.setTitle("Spline Chart");
-            chart.addSubtitle("(XCL-Charts Demo)");
+            chart.setTitle("降雨量统计");
+            chart.addSubtitle("(2016-2017)");
 
             //激活点击监听
             chart.ActiveListenItemClick();

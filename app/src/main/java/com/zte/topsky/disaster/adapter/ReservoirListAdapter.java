@@ -69,6 +69,8 @@ public class ReservoirListAdapter extends BaseAdapter {
             viewHolder.tvRiverWaterCapacity.setText(mData.get(position).getCapacity());
             viewHolder.tvRiverRestrictLevel.setText(mData.get(position).getRestrictLevel());
             viewHolder.tvRiverStorageRate.setText(mData.get(position).getStorageRate());
+            viewHolder.tvRiverStorageRate.setText(mData.get(position).getStorageRate());
+            viewHolder.tvRiverQuality.setText(mData.get(position).getQuality());
 
             convertView.setTag(viewHolder);
         } else {
@@ -88,6 +90,8 @@ public class ReservoirListAdapter extends BaseAdapter {
         TextView tvRiverRestrictLevel;
         @BindView(R.id.tv_reservoir_storage_rate)
         TextView tvRiverStorageRate;
+        @BindView(R.id.tv_reservoir_quality)
+        TextView tvRiverQuality;
         @BindView(R.id.ll_item)
         LinearLayout llItem;
 

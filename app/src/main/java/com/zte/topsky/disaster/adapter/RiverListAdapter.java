@@ -68,6 +68,8 @@ public class RiverListAdapter extends BaseAdapter {
             viewHolder.tvRiverCurrentLevel.setText(mData.get(position).getCurrentLevel());
             viewHolder.tvRiverAlertLevel.setText(mData.get(position).getAlertLevel());
             viewHolder.tvRiverCriticalLevel.setText(mData.get(position).getCriticalLevel());
+            viewHolder.tvRiverCriticalLevel.setText(mData.get(position).getCriticalLevel());
+            viewHolder.tvRiverFlow.setText(mData.get(position).getFlow());
 
             convertView.setTag(viewHolder);
         } else {
@@ -85,6 +87,8 @@ public class RiverListAdapter extends BaseAdapter {
         TextView tvRiverAlertLevel;
         @BindView(R.id.tv_river_critical_level)
         TextView tvRiverCriticalLevel;
+        @BindView(R.id.tv_river_flow)
+        TextView tvRiverFlow;
         @BindView(R.id.ll_item)
         LinearLayout llItem;
 

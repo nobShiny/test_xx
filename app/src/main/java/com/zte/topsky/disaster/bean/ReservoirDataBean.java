@@ -15,14 +15,16 @@ public class ReservoirDataBean {
     private String capacity;
     private String restrictLevel;
     private String storageRate;
+    private String quality;
 
-    public ReservoirDataBean(LatLng position, String name, String currentLevel, String capacity, String restrictLevel, String storageRate) {
+    public ReservoirDataBean(LatLng position, String name, String currentLevel, String capacity, String restrictLevel, String storageRate, String quality) {
         this.position = position;
         this.name = name;
         this.currentLevel = currentLevel;
         this.capacity = capacity;
         this.restrictLevel = restrictLevel;
         this.storageRate = storageRate;
+        this.quality = quality;
     }
 
     public LatLng getPosition() {
@@ -71,5 +73,13 @@ public class ReservoirDataBean {
 
     public void setStorageRate(String storageRate) {
         this.storageRate = storageRate;
+    }
+
+    public String getQuality() {
+        return quality;
+    }
+
+    public void setQuality(String quality) {
+        this.quality = quality;
     }
 }

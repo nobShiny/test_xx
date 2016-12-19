@@ -117,7 +117,7 @@ public class ReservoirActivity extends BaseActivity implements AMap.OnMarkerClic
         listAdapter = new ReservoirListAdapter(this, mData);
         dialog = DialogPlus.newDialog(ReservoirActivity.this)
                 .setAdapter(listAdapter)
-                .setHeader(R.layout.layout_river_list_header)
+                .setHeader(R.layout.layout_reservoir_list_header)
                 .setGravity(Gravity.BOTTOM)
                 .setCancelable(true)
                 .setExpanded(true, 800)

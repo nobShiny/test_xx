@@ -2,6 +2,7 @@ package com.zte.topsky.monitor.activity;
 
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -51,9 +52,10 @@ public class MonitorActivity extends BaseActivity {
             tvTitleText.setText("监控");
         }
 
-        videoUrl = "http://111.206.109.135/youku/6575DE60BE73C8310504A26364/03000201004D86B095F1A701ED892DE6F39CFE-EA7F-C587-B677-D6A8EE9CCF37.flv";
+//        videoUrl = "http://111.206.109.135/youku/6575DE60BE73C8310504A26364/03000201004D86B095F1A701ED892DE6F39CFE-EA7F-C587-B677-D6A8EE9CCF37.flv";
 //        videoUrl = "http://us.sinaimg.cn/003xaEf8jx076hcqKZ8H05040100gmch0k01.mp4?Expires=1478663683&KID=unistore,video&ssig=ENub0YD4Hq";
-//        videoUrl = "http://121.29.55.49/youku/6979DD10DDB4979FA97006DBD/03000801004EEABAEC9CEF0017BD61BD8A187B-3461-8D31-947B-32C563039C6A.mp4";
+        videoUrl = "http://vod.mwr.gov.cn:3880/M%3A%2Fvoddata_m%2F%E6%B1%89%E5%9F%8E%E6%B9%961.mp41.mp4?start=0";
+        Uri mUri = Uri.parse("android.resource://com.zte.topsky/"+R.raw.video);
         svViewContent.setUp(videoUrl,JCVideoPlayerStandard.SCREEN_LAYOUT_NORMAL,"");
         svViewContent.startWindowFullscreen();
         initVideoView();
